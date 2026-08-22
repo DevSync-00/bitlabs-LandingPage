@@ -29,7 +29,7 @@ export function BinaryRain() {
     const colorRgb =
       getComputedStyle(document.documentElement)
         .getPropertyValue("--rain-color")
-        .trim() || (isDark ? "130, 180, 255" : "60, 90, 160");
+        .trim() || (isDark ? "92, 145, 255" : "31, 83, 219");
 
     let width = 0;
     let height = 0;

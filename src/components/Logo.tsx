@@ -13,7 +13,7 @@ type Props = {
  * Crossfade is handled with paired <img> tags + theme-driven opacity for
  * flicker-free, GPU-accelerated transitions.
  */
-export function Logo({ className = "", height = 28 }: Props) {
+export function Logo({ className = "", height = 36 }: Props) {
   return (
     <span
       className={`relative inline-block align-middle ${className}`}
