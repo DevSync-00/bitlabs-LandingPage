@@ -1,86 +1,37 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { products } from "@/data/products";
+import { ContactBand, PageHero } from "@/components/Marketing";
 
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "Products — BitLabs Technology" },
-      { name: "description", content: "A suite of intelligent platforms across AI, ERP, security, DevOps, analytics, and fintech." },
-      { property: "og:title", content: "Products — BitLabs Technology" },
-      { property: "og:description", content: "Enterprise products engineered by BitLabs." },
+      { title: "Our Work | Software Products Built by BitLabs Technology" },
+      { name: "description", content: "Explore real mobile apps, enterprise platforms, healthtech, cybersecurity and developer tools designed and built by BitLabs Technology." },
+      { property: "og:title", content: "Products and digital platforms built by BitLabs" },
+      { property: "og:description", content: "Seven real products spanning travel, local services, health, cybersecurity, education and developer infrastructure." },
     ],
   }),
   component: Products,
 });
 
 function Products() {
-  return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-      <section className="text-center max-w-3xl mx-auto mb-20">
-        <div className="inline-block text-xs font-mono uppercase tracking-widest text-primary mb-4">Products</div>
-        <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight">
-          Platforms engineered for <span className="text-gradient">scale</span>.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          Each product is the distilled output of years of engineering across
-          AI, infrastructure, and enterprise systems.
-        </p>
-      </section>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((p, i) => (
-          <motion.div
-            key={p.slug}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: (i % 3) * 0.08 }}
-          >
-            <Link
-              to="/products/$slug"
-              params={{ slug: p.slug }}
-              className="group block h-full p-7 rounded-2xl glass hover:border-primary/40 hover:-translate-y-1 transition-all"
-            >
-              {/* Visual header */}
-              <div className="relative h-40 rounded-xl mb-6 overflow-hidden grid-bg">
-                <div
-                  className="absolute inset-0 opacity-80"
-                  style={{
-                    background:
-                      p.accent === "purple"
-                        ? "radial-gradient(ellipse at center, oklch(0.5 0.2 295 / 0.6), transparent 70%)"
-                        : p.accent === "cyan"
-                        ? "radial-gradient(ellipse at center, oklch(0.6 0.18 220 / 0.6), transparent 70%)"
-                        : "radial-gradient(ellipse at center, oklch(0.5 0.22 260 / 0.6), transparent 70%)",
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-16 w-16 rounded-2xl bg-gradient-primary glow flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Sparkles className="h-7 w-7 text-primary-foreground" />
-                  </div>
-                </div>
-              </div>
-
-              <h3 className="font-display text-2xl font-semibold mb-2">{p.name}</h3>
-              <p className="text-sm text-muted-foreground mb-5">{p.tagline}</p>
-
-              <div className="flex flex-wrap gap-1.5 mb-5">
-                {p.tags.map((t) => (
-                  <span key={t} className="text-xs font-mono px-2 py-0.5 rounded-md bg-white/5 text-muted-foreground border border-white/5">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="inline-flex items-center gap-2 text-sm text-primary group-hover:gap-3 transition-all">
-                Learn more <ArrowRight className="h-4 w-4" />
-              </div>
-            </Link>
-          </motion.div>
-        ))}
+  return <div className="bg-white dark:bg-white">
+    <PageHero eyebrow="Selected work" title="Real products, built for real-world use." intro="From Ethiopian consumer marketplaces to global developer infrastructure, these are products our team has designed and engineered—not concept pieces." />
+    <section className="section-shell">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="mb-10 flex items-end justify-between border-b border-[#d4dad5] pb-6">
+          <div><p className="eyebrow text-forest">BitLabs portfolio</p><h2 className="mt-4 text-3xl font-semibold tracking-[-.04em] text-navy">Seven products. Seven distinct problems.</h2></div>
+          <span className="hidden text-sm text-[#66716b] md:block">Web, mobile, desktop and infrastructure</span>
+        </div>
+        <div className="grid border-l border-t border-[#d4dad5] md:grid-cols-2">
+          {products.map((product, index) => <Link key={product.slug} to="/products/$slug" params={{ slug: product.slug }} className="group flex min-h-[330px] flex-col border-b border-r border-[#d4dad5] p-8 transition-colors hover:bg-[#f2f7ef] lg:p-10">
+            <div className="flex items-start justify-between"><span className="text-xs font-semibold text-forest">{String(index + 1).padStart(2, "0")}</span><ArrowUpRight className="h-4 w-4 text-[#929b96] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-forest" /></div>
+            <div className="mt-auto pt-16"><p className="text-xs font-semibold uppercase tracking-[.12em] text-[#7b857f]">{product.type}</p><h2 className="mt-3 text-3xl font-semibold tracking-[-.04em] text-navy">{product.name}</h2><p className="mt-3 max-w-md text-sm leading-6 text-[#66716b]">{product.tagline}</p></div>
+          </Link>)}
+        </div>
       </div>
-    </div>
-  );
+    </section>
+    <ContactBand title="Have a product that needs to become real?" text="We turn complex ideas into dependable web, mobile, desktop and cloud products—from discovery through launch." />
+  </div>;
 }

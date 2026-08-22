@@ -1,228 +1,30 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Layers, Lightbulb } from "lucide-react";
-import { getProduct, products } from "@/data/products";
+import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ContactBand } from "@/components/Marketing";
+import { getProduct } from "@/data/products";
 
 export const Route = createFileRoute("/products/$slug")({
-  loader: ({ params }) => {
-    const product = getProduct(params.slug);
-    if (!product) throw notFound();
-    return { product };
-  },
-  head: ({ loaderData }) => {
-    const p = loaderData?.product;
-    return {
-      meta: p
-        ? [
-            { title: `${p.name} — BitLabs Technology` },
-            { name: "description", content: p.tagline },
-            { property: "og:title", content: `${p.name} — BitLabs Technology` },
-            { property: "og:description", content: p.tagline },
-          ]
-        : [{ title: "Product not found" }],
-    };
-  },
-  notFoundComponent: () => (
-    <div className="mx-auto max-w-3xl px-4 py-32 text-center">
-      <h1 className="font-display text-4xl font-semibold mb-4">Product not found</h1>
-      <Link to="/products" className="text-primary">← Back to products</Link>
-    </div>
-  ),
-  errorComponent: ({ error }) => (
-    <div className="mx-auto max-w-3xl px-4 py-32 text-center">
-      <h1 className="font-display text-4xl font-semibold mb-4">Something went wrong</h1>
-      <p className="text-muted-foreground">{error.message}</p>
-    </div>
-  ),
+  loader: ({ params }) => { const product = getProduct(params.slug); if (!product) throw notFound(); return { product }; },
+  head: ({ loaderData }) => ({ meta: [
+    { title: `${loaderData?.product.name ?? "Product"} Case Study | BitLabs Technology` },
+    { name: "description", content: loaderData?.product.description ?? "" },
+    { property: "og:title", content: `${loaderData?.product.name ?? "Product"} — Built by BitLabs` },
+    { property: "og:description", content: loaderData?.product.tagline ?? "" },
+    { property: "og:type", content: "article" },
+  ] }),
   component: ProductDetail,
 });
 
 function ProductDetail() {
-  const { product: p } = Route.useLoaderData() as { product: import("@/data/products").Product };
-  const related = products.filter((x) => x.slug !== p.slug).slice(0, 3);
-
-  return (
-    <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-50" />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              p.accent === "purple"
-                ? "radial-gradient(ellipse at top, oklch(0.3 0.18 295 / 0.5), transparent 60%)"
-                : p.accent === "cyan"
-                ? "radial-gradient(ellipse at top, oklch(0.3 0.15 220 / 0.5), transparent 60%)"
-                : "radial-gradient(ellipse at top, oklch(0.3 0.18 260 / 0.5), transparent 60%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-mono text-muted-foreground mb-6">
-              <Sparkles className="h-3 w-3 text-primary" /> BITLABS PRODUCT
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight">
-              {p.name}
-            </h1>
-            <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto">{p.tagline}</p>
-
-            <div className="mt-8 flex flex-wrap justify-center gap-2">
-              {p.tags.map((t) => (
-                <span key={t} className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted-foreground">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-primary text-primary-foreground font-medium animate-pulse-glow"
-              >
-                Request Demo <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/products" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl glass">
-                All products
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Overview */}
-      <section className="mx-auto max-w-4xl px-4 py-20 text-center">
-        <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">{p.description}</p>
-      </section>
-
-      {/* Features */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="text-center mb-12">
-          <div className="inline-block text-xs font-mono uppercase tracking-widest text-primary mb-3">Features</div>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold">Built with intent</h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-5">
-          {p.features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-              className="p-6 rounded-2xl glass"
-            >
-              <div className="h-10 w-10 rounded-lg bg-gradient-primary flex items-center justify-center mb-3">
-                <Layers className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground">{f.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Mockup placeholder */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="relative rounded-3xl glass overflow-hidden p-2">
-          <div className="aspect-video rounded-2xl grid-bg relative flex items-center justify-center">
-            <div className="absolute inset-0" style={{
-              background: "radial-gradient(ellipse at center, oklch(0.3 0.2 260 / 0.5), transparent 70%)",
-            }} />
-            <div className="relative text-center">
-              <div className="h-20 w-20 rounded-2xl bg-gradient-primary glow mx-auto mb-4 flex items-center justify-center">
-                <Sparkles className="h-9 w-9 text-primary-foreground" />
-              </div>
-              <p className="font-mono text-sm text-muted-foreground">{p.name} · interface preview</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="mx-auto max-w-5xl px-4 py-16">
-        <div className="text-center mb-12">
-          <div className="inline-block text-xs font-mono uppercase tracking-widest text-primary mb-3">Benefits</div>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold">Why teams choose it</h2>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {p.benefits.map((b) => (
-            <div key={b} className="flex items-start gap-3 p-4 rounded-xl glass">
-              <div className="h-6 w-6 rounded-md bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <Check className="h-3.5 w-3.5 text-primary" />
-              </div>
-              <span className="text-sm">{b}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech + Use cases */}
-      <section className="mx-auto max-w-5xl px-4 py-16 grid md:grid-cols-2 gap-6">
-        <div className="p-7 rounded-2xl glass">
-          <h3 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
-            <Layers className="h-5 w-5 text-primary" /> Technologies
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {p.technologies.map((t) => (
-              <span key={t} className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="p-7 rounded-2xl glass">
-          <h3 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-primary" /> Use cases
-          </h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {p.useCases.map((u) => (
-              <li key={u} className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {u}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-5xl px-4 py-20">
-        <div className="relative rounded-3xl glass p-10 md:p-16 text-center overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-40" />
-          <h2 className="relative font-display text-3xl md:text-4xl font-semibold mb-4">
-            See {p.name} in action
-          </h2>
-          <p className="relative text-muted-foreground max-w-xl mx-auto mb-8">
-            Schedule a personalized walkthrough with our team.
-          </p>
-          <Link
-            to="/contact"
-            className="relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-medium animate-pulse-glow"
-          >
-            Request Demo <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Related */}
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <h3 className="font-display text-2xl font-semibold mb-6">Other products</h3>
-        <div className="grid md:grid-cols-3 gap-5">
-          {related.map((r) => (
-            <Link
-              key={r.slug}
-              to="/products/$slug"
-              params={{ slug: r.slug }}
-              className="group p-6 rounded-2xl glass hover:border-primary/40 transition-all"
-            >
-              <h4 className="font-display text-lg font-semibold mb-1">{r.name}</h4>
-              <p className="text-sm text-muted-foreground mb-3">{r.tagline}</p>
-              <span className="inline-flex items-center gap-1 text-sm text-primary group-hover:gap-2 transition-all">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
+  const { product } = Route.useLoaderData();
+  return <div className="bg-white dark:bg-white">
+    <section className="bg-navy text-white"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <Link to="/products" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.15em] text-slate-400"><ArrowLeft className="h-3.5 w-3.5" />All work</Link>
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end"><div><p className="eyebrow text-lime">{product.type}</p><h1 className="mt-6 text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-none tracking-[-.06em]">{product.name}</h1></div><div><p className="text-lg leading-8 text-slate-300">{product.tagline}</p><a href={product.url} target="_blank" rel="noreferrer" className="button-primary mt-7">Visit live product <ArrowUpRight className="h-4 w-4" /></a></div></div>
+    </div></section>
+    <section className="section-shell"><div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-10"><div><p className="eyebrow text-forest">The product</p><h2 className="mt-5 text-3xl font-semibold tracking-[-.04em] text-navy">Purpose-built around a clear user need.</h2></div><div><p className="text-lg leading-8 text-[#59645f]">{product.description}</p><div className="mt-8 flex flex-wrap gap-2">{product.tags.map(tag => <span key={tag} className="bg-[#edf2ed] px-3 py-2 text-xs font-medium text-forest">{tag}</span>)}</div></div></div></section>
+    <section className="section-shell bg-[#f4f6f3]"><div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><p className="eyebrow text-forest">Core capabilities</p><div className="mt-10 grid border-l border-t border-[#d1d8d2] md:grid-cols-2">{product.features.map((feature, index) => <div key={feature.title} className="border-b border-r border-[#d1d8d2] bg-white p-8 lg:p-10"><span className="text-xs font-semibold text-forest">{String(index + 1).padStart(2, "0")}</span><h3 className="mt-8 text-xl font-semibold text-navy">{feature.title}</h3><p className="mt-3 text-sm leading-6 text-[#66716b]">{feature.desc}</p></div>)}</div></div></section>
+    <section className="section-shell"><div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 md:grid-cols-2 lg:px-10"><div><p className="eyebrow text-forest">Product value</p><ul className="mt-7 space-y-4">{product.benefits.map(item => <li key={item} className="flex gap-3 text-sm text-[#465249]"><Check className="mt-0.5 h-4 w-4 shrink-0 text-forest" />{item}</li>)}</ul></div><div><p className="eyebrow text-forest">Built for</p><ul className="mt-7 space-y-4">{product.useCases.map(item => <li key={item} className="border-b border-[#dce1dd] pb-4 text-sm text-[#465249]">{item}</li>)}</ul></div></div></section>
+    <ContactBand title={`Want to build the next ${product.name}?`} text="Bring us the problem. We will help shape, design and engineer the product around it." />
+  </div>;
 }

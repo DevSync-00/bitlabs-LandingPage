@@ -1,155 +1,128 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Check, Github, Twitter, Linkedin } from "lucide-react";
-
+import { ArrowUpRight, Check } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — BitLabs Technology" },
-      { name: "description", content: "Get in touch with BitLabs Technology. We respond within one business day." },
-      { property: "og:title", content: "Contact — BitLabs Technology" },
-      { property: "og:description", content: "Let's build something together." },
+      { name: "description", content: "Talk to BitLabs about your technology priorities." },
     ],
   }),
   component: Contact,
 });
-
-function Field({
-  label, name, type = "text", required, value, onChange, textarea,
-}: {
-  label: string; name: string; type?: string; required?: boolean;
-  value: string; onChange: (v: string) => void; textarea?: boolean;
-}) {
-  const [focused, setFocused] = useState(false);
-  const Comp: any = textarea ? "textarea" : "input";
-  return (
-    <div className="relative">
-      <label className={`absolute left-4 transition-all pointer-events-none font-mono text-xs ${
-        focused || value ? "-top-2 px-1 bg-background text-primary" : "top-3.5 text-muted-foreground"
-      }`}>
-        {label}{required && " *"}
-      </label>
-      <Comp
-        name={name}
-        type={type}
-        required={required}
-        value={value}
-        onChange={(e: any) => onChange(e.target.value)}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        rows={textarea ? 5 : undefined}
-        className="w-full px-4 py-3.5 rounded-xl bg-input/40 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40 transition-all resize-none"
-      />
-    </div>
-  );
-}
-
 function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
   const [sent, setSent] = useState(false);
-
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      setForm({ name: "", email: "", company: "", message: "" });
-    }, 3000);
   };
-
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-      <section className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-block text-xs font-mono uppercase tracking-widest text-primary mb-4">Contact</div>
-        <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight">
-          Let's build something <span className="text-gradient">extraordinary</span>.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          Tell us about your project. We'll reply within one business day.
-        </p>
-      </section>
-
-      <div className="grid lg:grid-cols-5 gap-8">
-        {/* Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="lg:col-span-3 p-8 md:p-10 rounded-3xl glass relative overflow-hidden"
-        >
-          <form onSubmit={submit} className="space-y-5">
-            <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Full name" name="name" required value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-              <Field label="Email" name="email" type="email" required value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
-            </div>
-            <Field label="Company" name="company" value={form.company} onChange={(v) => setForm({ ...form, company: v })} />
-            <Field label="How can we help?" name="message" textarea required value={form.message} onChange={(v) => setForm({ ...form, message: v })} />
-
-            <button
-              type="submit"
-              disabled={sent}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-medium animate-pulse-glow disabled:opacity-70"
-            >
-              {sent ? <><Check className="h-4 w-4" /> Sent — we'll be in touch</> : <>Send message <Send className="h-4 w-4" /></>}
-            </button>
-          </form>
-
-          <AnimatePresence>
-            {sent && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-x-0 bottom-0 h-1 bg-gradient-primary"
-              />
-            )}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Info */}
-        <div className="lg:col-span-2 space-y-4">
-          {[
-            { icon: Mail, label: "Email", value: "hello@bitlabs.tech" },
-            { icon: Phone, label: "Phone", value: "+251 (0) 911 000 000" },
-            { icon: MapPin, label: "Office", value: "Bole Road, Addis Ababa" },
-          ].map((item, i) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-2xl glass flex items-center gap-4"
-            >
-              <div className="h-11 w-11 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                <item.icon className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground">{item.label}</div>
-                <div className="font-medium">{item.value}</div>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Map placeholder */}
-          <div className="rounded-2xl glass overflow-hidden">
-            <div className="aspect-[4/3] grid-bg relative flex items-center justify-center">
-              <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, oklch(0.3 0.18 260 / 0.4), transparent 70%)" }} />
-              <div className="relative text-center">
-                <MapPin className="h-8 w-8 mx-auto text-primary mb-2" />
-                <p className="font-mono text-sm text-muted-foreground">9.0054° N, 38.7636° E</p>
-              </div>
+    <div className="bg-white dark:bg-white">
+      <section className="bg-navy text-white">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-10 lg:py-28">
+          <div>
+            <p className="eyebrow text-lime">Contact</p>
+            <h1 className="mt-6 text-[clamp(3rem,5vw,4.8rem)] font-semibold leading-none tracking-[-.055em]">
+              Let’s talk about what you need to deliver.
+            </h1>
+            <p className="mt-7 max-w-md text-base leading-7 text-slate-300">
+              Whether you need specialist capacity, a complete delivery team, or advice on a
+              technology decision, start with a straightforward conversation.
+            </p>
+            <div className="mt-12 border-t border-white/15 pt-7">
+              <p className="text-xs uppercase tracking-[.14em] text-slate-500">Direct contact</p>
+              <a
+              href="mailto:contact@bitlabsbuild.com"
+                className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-white"
+              >
+              contact@bitlabsbuild.com <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <p className="mt-2 text-sm text-slate-400">Addis Ababa, Ethiopia</p>
             </div>
           </div>
-
-          <div className="flex gap-3">
-            {[Github, Twitter, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="flex-1 h-12 rounded-xl glass flex items-center justify-center hover:border-primary/40 hover:text-primary transition-all">
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+          <div className="bg-white p-7 text-navy sm:p-10">
+            {sent ? (
+              <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eef8dc]">
+                  <Check className="h-5 w-5 text-forest" />
+                </span>
+                <h2 className="mt-6 text-2xl font-semibold">Thank you for getting in touch.</h2>
+                <p className="mt-3 max-w-md text-sm leading-6 text-[#69736d]">
+                  Your enquiry has been received. A member of our team will respond within one
+                  business day.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={submit}>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <Field label="Full name" name="name" />
+                  <Field label="Work email" name="email" type="email" />
+                  <Field label="Company" name="company" />
+                  <Field label="Phone (optional)" name="phone" required={false} />
+                </div>
+                <div className="mt-6">
+                  <label className="text-xs font-semibold text-[#465249]" htmlFor="need">
+                    How can we help?
+                  </label>
+                  <select
+                    id="need"
+                    className="mt-2 w-full border border-[#cad1cb] bg-white px-4 py-3 text-sm outline-none focus:border-forest"
+                  >
+                    <option>Technology outsourcing</option>
+                    <option>Custom software development</option>
+                    <option>AI, data or cloud</option>
+                    <option>Technology consulting</option>
+                    <option>Something else</option>
+                  </select>
+                </div>
+                <div className="mt-6">
+                  <label className="text-xs font-semibold text-[#465249]" htmlFor="message">
+                    Tell us briefly about your requirements
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={5}
+                    className="mt-2 w-full resize-none border border-[#cad1cb] px-4 py-3 text-sm outline-none focus:border-forest"
+                  />
+                </div>
+                <button className="button-dark mt-7 w-full" type="submit">
+                  Send enquiry <ArrowUpRight className="h-4 w-4" />
+                </button>
+                <p className="mt-4 text-center text-xs text-[#838d87]">
+                  We usually respond within one business day.
+                </p>
+              </form>
+            )}
           </div>
         </div>
-      </div>
+      </section>
+    </div>
+  );
+}
+function Field({
+  label,
+  name,
+  type = "text",
+  required = true,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="text-xs font-semibold text-[#465249]" htmlFor={name}>
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        className="mt-2 w-full border border-[#cad1cb] px-4 py-3 text-sm outline-none focus:border-forest"
+      />
     </div>
   );
 }

@@ -1,73 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import {
-  Code2, Globe, Smartphone, BrainCircuit, Cloud, Palette,
-  Database, Plug, GitBranch, Headphones, ShieldCheck, Settings,
-} from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, BrainCircuit, Cloud, Code2, Headphones, Layers3, ShieldCheck } from "lucide-react";
+import { ContactBand, PageHero } from "@/components/Marketing";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — BitLabs Technology" },
-      { name: "description", content: "Software engineering, AI, cloud, design, and security — all under one roof." },
-      { property: "og:title", content: "Services — BitLabs Technology" },
-      { property: "og:description", content: "Custom software, AI, mobile, cloud, and more." },
-    ],
-  }),
-  component: Services,
-});
+export const Route = createFileRoute("/services")({ head: () => ({ meta: [{ title: "Services — BitLabs Technology" }, { name: "description", content: "Technology outsourcing, custom software, AI, cloud and consulting services." }] }), component: Services });
 
-const services = [
-  { icon: Code2, title: "Custom Software Development", desc: "Bespoke platforms engineered from first principles." },
-  { icon: Globe, title: "Web Development", desc: "High-performance web apps with cinematic interfaces." },
-  { icon: Smartphone, title: "Mobile App Development", desc: "Native-feel iOS and Android products people love." },
-  { icon: BrainCircuit, title: "AI Solutions", desc: "LLMs, RAG, agents, and custom models in production." },
-  { icon: Cloud, title: "Cloud Systems", desc: "Multi-cloud architecture, IaC, and edge deployments." },
-  { icon: Palette, title: "UI / UX Design", desc: "Interface design that translates strategy into clarity." },
-  { icon: Database, title: "ERP Systems", desc: "Modern ERPs unifying finance, ops, and inventory." },
-  { icon: Plug, title: "API Integration", desc: "Seamless connectivity across SaaS, payments, and data." },
-  { icon: GitBranch, title: "DevOps", desc: "Pipelines, observability, and platform engineering done right." },
-  { icon: Headphones, title: "IT Consulting", desc: "Strategic technical guidance from senior engineers." },
-  { icon: ShieldCheck, title: "Cybersecurity", desc: "Posture, detection, and zero-trust at scale." },
-  { icon: Settings, title: "Managed Services", desc: "We run, monitor, and improve your platforms 24/7." },
+const groups = [
+  { icon: Layers3, number: "01", title: "Technology outsourcing", intro: "Add proven capability without adding recruitment complexity.", items: ["Dedicated development teams", "Staff augmentation", "Nearshore and offshore delivery", "Quality assurance and DevOps"] },
+  { icon: Code2, number: "02", title: "Custom software development", intro: "Build secure, maintainable software around the way your organisation works.", items: ["Web and mobile applications", "Enterprise platforms", "System integration and APIs", "Legacy modernisation"] },
+  { icon: BrainCircuit, number: "03", title: "AI and data", intro: "Turn operational data and practical AI into useful business capability.", items: ["AI readiness and strategy", "Intelligent workflow automation", "Data platforms and analytics", "Production AI applications"] },
+  { icon: Cloud, number: "04", title: "Cloud and infrastructure", intro: "Modernise infrastructure while improving reliability, security, and cost control.", items: ["Cloud architecture and migration", "Platform engineering", "Managed DevOps", "Monitoring and optimisation"] },
+  { icon: Headphones, number: "05", title: "Technology consulting", intro: "Make informed technology decisions with experienced, independent guidance.", items: ["Architecture review", "Delivery and product strategy", "Technology due diligence", "Transformation roadmaps"] },
+  { icon: ShieldCheck, number: "06", title: "Managed services", intro: "Keep business-critical systems secure, supported, and performing well.", items: ["Application support", "Infrastructure operations", "Security improvement", "Continuous maintenance"] },
 ];
 
-function Services() {
-  return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-      <section className="text-center max-w-3xl mx-auto mb-20">
-        <div className="inline-block text-xs font-mono uppercase tracking-widest text-primary mb-4">Services</div>
-        <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight">
-          Engineering capabilities, <span className="text-gradient">end to end</span>.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          A full-stack technology partner for product, infrastructure, and intelligence.
-        </p>
-      </section>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: (i % 6) * 0.06 }}
-            className="group relative p-7 rounded-2xl glass hover:border-primary/40 hover:-translate-y-1 transition-all overflow-hidden"
-          >
-            <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"
-              style={{ background: "linear-gradient(135deg, oklch(0.72 0.2 250 / 0.15), transparent 60%)" }}
-            />
-            <div className="relative">
-              <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform">
-                <s.icon className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-lg font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground">{s.desc}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-}
+function Services() { return <div className="bg-white dark:bg-white"><PageHero eyebrow="Services" title="Technology expertise, applied where it matters." intro="Outsourcing is a major part of what we do, but not the limit. BitLabs supports the full technology lifecycle—from adding engineering capacity to owning complete delivery and long-term operations." /><section className="section-shell"><div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><div className="grid border-l border-t border-[#d4dad5] md:grid-cols-2">{groups.map(g => <article key={g.title} className="border-b border-r border-[#d4dad5] p-8 lg:p-12"><div className="flex items-start justify-between"><g.icon className="h-7 w-7 text-forest"/><span className="text-xs font-semibold text-[#8b948f]">{g.number}</span></div><h2 className="mt-12 text-2xl font-semibold tracking-[-.025em] text-navy">{g.title}</h2><p className="mt-3 max-w-md text-sm leading-6 text-[#66716b]">{g.intro}</p><ul className="mt-8 space-y-3 border-t border-[#e1e5e2] pt-6">{g.items.map(i => <li key={i} className="flex items-center gap-3 text-sm text-[#344139]"><span className="h-1.5 w-1.5 bg-lime"/>{i}</li>)}</ul></article>)}</div><div className="mt-16 grid gap-8 bg-[#f3f6f2] p-8 md:grid-cols-[1fr_auto] md:items-center lg:p-12"><div><p className="eyebrow text-forest">Not sure what model fits?</p><h2 className="mt-4 text-3xl font-semibold tracking-[-.035em] text-navy">Start with the problem, not the service label.</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#66716b]">We will assess your delivery needs and recommend a team structure that makes commercial and technical sense.</p></div><Link to="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-forest">Discuss your needs <ArrowUpRight className="h-4 w-4"/></Link></div></div></section><ContactBand /></div>; }
