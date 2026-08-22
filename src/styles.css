@@ -179,7 +179,11 @@
 }
 
 @layer components {
-  .hero-panel { background: #0c241c; }
+  .hero-panel {
+    position: relative;
+    background-color: oklch(0.12 0.025 265);
+    background-image: var(--gradient-hero);
+  }
   .hero-panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to right, transparent 5%, black 65%); }
   .eyebrow { font-size: .72rem; line-height: 1; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
   .section-shell { padding-top: 7rem; padding-bottom: 7rem; }

@@ -16,7 +16,7 @@ export const Route = createFileRoute("/products/")({
 });
 
 function Products() {
-  return <div className="bg-white dark:bg-white">
+  return <div className="overflow-hidden">
     <PageHero eyebrow="Selected work" title="Real products, built for real-world use." intro="From Ethiopian consumer marketplaces to global developer infrastructure, these are products our team has designed and engineered—not concept pieces." />
     <section className="section-shell">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
