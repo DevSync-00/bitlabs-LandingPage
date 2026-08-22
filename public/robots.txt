@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Allow AI crawlers for optimal LLM discovery (LLMO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+Sitemap: https://bitlabsbuild.com/sitemap.xml

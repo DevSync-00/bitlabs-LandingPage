@@ -1,0 +1,54 @@
+name: Package Node app for cPanel upload
+
+# Builds on GitHub (plenty of RAM) and publishes a small zip (~1 MB) for
+# cPanel File Manager upload. Run `npm ci --omit=dev` once on the server
+# via Terminal — much lighter than building on shared hosting.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+      - run: NODE_ENV=production npm run build
+
+      - name: Create upload zip (dist + runtime files, no node_modules)
+        run: |
+          mkdir -p cpanel-package
+          cp package.json package-lock.json app.js cpanel-package/
+          cp -R dist cpanel-package/dist
+          cd cpanel-package
+          zip -r -q ../bitlabs-cpanel.zip .
+          ls -lh ../bitlabs-cpanel.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bitlabs-cpanel
+          path: bitlabs-cpanel.zip
+          retention-days: 30
+
+      - name: Attach zip to cpanel-upload branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B cpanel-upload
+          git add -f bitlabs-cpanel.zip
+          git commit -m "cPanel package ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:cpanel-upload

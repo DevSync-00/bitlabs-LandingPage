@@ -1,0 +1,1 @@
+import{j as t,a as o}from"./index-CAmnkYkI.js";const n=()=>t.jsxs("div",{className:"mx-auto max-w-3xl px-4 py-32 text-center",children:[t.jsx("h1",{className:"font-display text-4xl font-semibold mb-4",children:"Product not found"}),t.jsx(o,{to:"/products",className:"text-primary",children:"← Back to products"})]});export{n as notFoundComponent};

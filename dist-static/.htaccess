@@ -1,0 +1,20 @@
+# Apache (cPanel) — serve prerendered pages and fall back for client navigation
+DirectoryIndex index.html
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve existing files and directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # /about -> /about/index.html (prerender output)
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
