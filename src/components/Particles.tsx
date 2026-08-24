@@ -20,7 +20,7 @@ export function Particles({ count = 24 }: { count?: number }) {
         size: Math.random() * 3 + 1,
         duration: Math.random() * 12 + 12,
         delay: Math.random() * 10,
-        hue: Math.random() > 0.5 ? 250 : 295,
+        hue: Math.random() > 0.5 ? 264 : 293,
       }))
     );
   }, [count]);

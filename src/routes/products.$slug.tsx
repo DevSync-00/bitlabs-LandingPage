@@ -17,8 +17,8 @@ export const Route = createFileRoute("/products/$slug")({
 
 function ProductDetail() {
   const { product } = Route.useLoaderData();
-  return <div className="bg-white dark:bg-white">
-    <section className="bg-navy text-white"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+  return <div className="overflow-hidden">
+    <section className="hero-panel relative text-white"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
       <Link to="/products" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.15em] text-slate-400"><ArrowLeft className="h-3.5 w-3.5" />All work</Link>
       <div className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end"><div><p className="eyebrow text-lime">{product.type}</p><h1 className="mt-6 text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-none tracking-[-.06em]">{product.name}</h1></div><div><p className="text-lg leading-8 text-slate-300">{product.tagline}</p><a href={product.url} target="_blank" rel="noreferrer" className="button-primary mt-7">Visit live product <ArrowUpRight className="h-4 w-4" /></a></div></div>
     </div></section>

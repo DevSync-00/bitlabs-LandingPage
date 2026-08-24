@@ -17,8 +17,8 @@ function Contact() {
     setSent(true);
   };
   return (
-    <div className="bg-white dark:bg-white">
-      <section className="bg-navy text-white">
+    <div className="overflow-hidden">
+      <section className="hero-panel relative text-white">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-10 lg:py-28">
           <div>
             <p className="eyebrow text-lime">Contact</p>

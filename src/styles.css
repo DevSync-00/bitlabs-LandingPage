@@ -34,6 +34,30 @@
   --color-surface: var(--surface);
   --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Full brand blue ramp */
+  --color-brand-blue-50: #EEF5FF;
+  --color-brand-blue-100: #D9E8FF;
+  --color-brand-blue-200: #B5D1FF;
+  --color-brand-blue-300: #8DB6FF;
+  --color-brand-blue-400: #5C91FF;
+  --color-brand-blue-500: #2662FE;
+  --color-brand-blue-600: #1F53DB;
+  --color-brand-blue-700: #143FB0;
+  --color-brand-blue-800: #0E2E81;
+  --color-brand-blue-900: #091F53;
+
+  /* Full brand purple ramp */
+  --color-brand-purple-50: #F5F3FF;
+  --color-brand-purple-100: #E8E2FF;
+  --color-brand-purple-200: #CFC3FF;
+  --color-brand-purple-300: #B29AFF;
+  --color-brand-purple-400: #956AFD;
+  --color-brand-purple-500: #7C39ED;
+  --color-brand-purple-600: #692FCB;
+  --color-brand-purple-700: #51229F;
+  --color-brand-purple-800: #391874;
+  --color-brand-purple-900: #231147;
 }
 
 /* LIGHT THEME (default) */
@@ -46,32 +70,33 @@
   --card-foreground: oklch(0.18 0.02 265);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 265);
-  --primary: oklch(0.58 0.2 255);
+  --primary: oklch(0.56 0.24 264);
   --primary-foreground: oklch(0.99 0.003 250);
   --secondary: oklch(0.95 0.015 260);
   --secondary-foreground: oklch(0.2 0.02 265);
   --muted: oklch(0.95 0.01 260);
   --muted-foreground: oklch(0.45 0.02 260);
-  --accent: oklch(0.6 0.22 295);
+  --accent: oklch(0.54 0.247 293);
   --accent-foreground: oklch(0.99 0.003 250);
   --destructive: oklch(0.6 0.24 25);
   --destructive-foreground: oklch(0.99 0.003 250);
   --border: oklch(0.2 0.02 265 / 10%);
   --input: oklch(0.2 0.02 265 / 12%);
-  --ring: oklch(0.58 0.2 255 / 50%);
-  --neon: oklch(0.58 0.2 255);
-  --neon-purple: oklch(0.6 0.22 295);
+  --ring: oklch(0.56 0.24 264 / 50%);
+  --neon: var(--primary);
+  --neon-purple: var(--accent);
 
-  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.2 255), oklch(0.6 0.22 295));
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.85 0.08 260 / 0.5), transparent 60%),
-    radial-gradient(ellipse at bottom, oklch(0.88 0.08 295 / 0.35), transparent 60%);
-  --shadow-glow: 0 10px 40px -10px oklch(0.58 0.2 255 / 0.35);
+  /* Note: --gradient-primary in light mode uses full-chroma brand values (0.56/0.54) for high contrast against white backgrounds. */
+  --gradient-primary: linear-gradient(135deg, oklch(0.56 0.24 264), oklch(0.54 0.247 293));
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.85 0.08 264 / 0.5), transparent 60%),
+    radial-gradient(ellipse at bottom, oklch(0.88 0.08 293 / 0.35), transparent 60%);
+  --shadow-glow: 0 10px 40px -10px oklch(0.56 0.24 264 / 0.35);
   --shadow-soft: 0 10px 40px -10px oklch(0.2 0.02 260 / 0.15);
 
   --glass-bg: oklch(1 0 0 / 0.65);
   --glass-border: oklch(0.2 0.02 265 / 0.08);
   --grid-line: oklch(0.2 0.02 265 / 0.06);
-  --rain-color: 30, 60, 120;
+  --rain-color: 31, 83, 219;
 }
 
 /* DARK THEME (primary) */
@@ -83,32 +108,33 @@
   --card-foreground: oklch(0.98 0.005 250);
   --popover: oklch(0.17 0.028 265);
   --popover-foreground: oklch(0.98 0.005 250);
-  --primary: oklch(0.72 0.2 250);
-  --primary-foreground: oklch(0.12 0.02 265);
-  --secondary: oklch(0.25 0.05 280);
+  --primary: oklch(0.68 0.185 264);
+  --primary-foreground: oklch(0.99 0.005 264);
+  --secondary: oklch(0.25 0.06 293);
   --secondary-foreground: oklch(0.98 0.005 250);
   --muted: oklch(0.22 0.03 265);
   --muted-foreground: oklch(0.7 0.025 260);
-  --accent: oklch(0.65 0.24 295);
+  --accent: oklch(0.64 0.21 293);
   --accent-foreground: oklch(0.98 0.005 250);
   --destructive: oklch(0.6 0.24 25);
   --destructive-foreground: oklch(0.98 0.005 250);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.72 0.2 250 / 60%);
-  --neon: oklch(0.78 0.2 240);
-  --neon-purple: oklch(0.7 0.25 300);
+  --ring: oklch(0.68 0.185 264 / 60%);
+  --neon: oklch(0.78 0.13 264);
+  --neon-purple: oklch(0.75 0.15 293);
 
-  --gradient-primary: linear-gradient(135deg, oklch(0.72 0.2 250), oklch(0.65 0.24 295));
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.25 0.12 270 / 0.6), transparent 60%),
-    radial-gradient(ellipse at bottom, oklch(0.22 0.15 295 / 0.4), transparent 60%);
-  --shadow-glow: 0 0 40px oklch(0.72 0.2 250 / 0.35), 0 0 80px oklch(0.65 0.24 295 / 0.2);
+  /* Note: --gradient-primary in dark mode uses slightly lighter values (0.6/0.56) for optimal luminescence on obsidian backgrounds. */
+  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.2 264), oklch(0.56 0.24 293));
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.25 0.12 264 / 0.6), transparent 60%),
+    radial-gradient(ellipse at bottom, oklch(0.22 0.15 293 / 0.4), transparent 60%);
+  --shadow-glow: 0 0 40px oklch(0.68 0.185 264 / 0.5), 0 0 80px oklch(0.64 0.21 293 / 0.35);
   --shadow-soft: 0 10px 40px -10px oklch(0.05 0.02 260 / 0.6);
 
-  --glass-bg: oklch(0.2 0.03 265 / 0.5);
+  --glass-bg: oklch(0.2 0.035 264 / 0.5);
   --glass-border: oklch(1 0 0 / 0.08);
   --grid-line: oklch(1 0 0 / 0.04);
-  --rain-color: 130, 180, 255;
+  --rain-color: 92, 145, 255;
 }
 
 @layer base {
@@ -130,8 +156,8 @@
 
   .dark body {
     background-image:
-      radial-gradient(circle at 20% 10%, oklch(0.25 0.15 265 / 0.25), transparent 50%),
-      radial-gradient(circle at 80% 80%, oklch(0.22 0.18 295 / 0.18), transparent 55%);
+      radial-gradient(circle at 20% 10%, oklch(0.25 0.15 264 / 0.25), transparent 50%),
+      radial-gradient(circle at 80% 80%, oklch(0.22 0.18 293 / 0.18), transparent 55%);
     background-attachment: fixed;
   }
 
@@ -153,7 +179,11 @@
 }
 
 @layer components {
-  .hero-panel { background: #0c241c; }
+  .hero-panel {
+    position: relative;
+    background-color: oklch(0.12 0.025 265);
+    background-image: var(--gradient-hero);
+  }
   .hero-panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to right, transparent 5%, black 65%); }
   .eyebrow { font-size: .72rem; line-height: 1; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
   .section-shell { padding-top: 7rem; padding-bottom: 7rem; }
