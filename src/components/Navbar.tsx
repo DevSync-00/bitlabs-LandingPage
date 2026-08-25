@@ -10,7 +10,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0c241c]/95 text-white backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-forest/95 text-white backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link to="/" aria-label="BitLabs home" className="flex items-center gap-3"><Logo height={38} /><span className="text-xl font-bold tracking-[-.03em]">BitLabs</span></Link>
         <nav className="hidden items-center gap-6 lg:flex">{links.map(l => <Link key={l.to} to={l.to} className="text-sm text-slate-300 transition-colors hover:text-white">{l.label}</Link>)}</nav>
