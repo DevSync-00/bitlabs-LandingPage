@@ -74,35 +74,36 @@ function ArticlePage() {
         ]
       : []),
   ];
+
   return (
     <div className="overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <header className="hero-panel relative text-white">
+      <header className="hero-panel relative text-foreground transition-colors">
         <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 lg:py-24">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.15em] text-slate-400"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.15em] text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             All articles
           </Link>
-          <p className="eyebrow mt-14 text-lime">{article.category}</p>
-          <h1 className="mt-6 text-[clamp(2.6rem,6vw,5rem)] font-semibold leading-[1.02] tracking-[-.055em]">
+          <p className="eyebrow mt-14 text-primary">{article.category}</p>
+          <h1 className="mt-6 text-[clamp(2.6rem,6vw,5rem)] font-semibold leading-[1.02] tracking-[-.055em] text-foreground">
             {article.title}
           </h1>
-          <p className="mt-8 text-sm text-slate-400">
+          <p className="mt-8 text-sm text-muted-foreground">
             {article.date} · {article.read}
           </p>
         </div>
       </header>
-      <article className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-xl leading-9 text-[#3f4b44]">{article.intro}</p>
+      <article className="mx-auto max-w-3xl my-12 bg-card text-card-foreground rounded-xl border border-border/60 p-8 sm:p-12">
+        <p className="text-xl leading-9 text-foreground">{article.intro}</p>
         {article.video && (
           <figure className="mt-12">
-            <div className="aspect-video overflow-hidden bg-navy">
+            <div className="aspect-video overflow-hidden rounded-lg bg-navy/20 border border-border/60">
               <iframe
                 className="h-full w-full"
                 src={`https://www.youtube-nocookie.com/embed/${article.video.youtubeId}`}
@@ -113,7 +114,7 @@ function ArticlePage() {
                 allowFullScreen
               />
             </div>
-            <figcaption className="mt-3 text-sm text-[#69736d]">
+            <figcaption className="mt-3 text-sm text-muted-foreground">
               Watch: {article.video.title}
             </figcaption>
           </figure>
@@ -121,20 +122,20 @@ function ArticlePage() {
         <div className="mt-16 space-y-14">
           {article.sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="text-3xl font-semibold tracking-[-.035em] text-navy">
+              <h2 className="text-3xl font-semibold tracking-[-.035em] text-foreground">
                 {section.heading}
               </h2>
               <div className="mt-6 space-y-5">
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-base leading-8 text-[#59645f]">
+                  <p key={paragraph} className="text-base leading-8 text-muted-foreground">
                     {paragraph}
                   </p>
                 ))}
               </div>
               {section.bullets && (
-                <ul className="mt-6 space-y-3 border-l-2 border-lime pl-6">
+                <ul className="mt-6 space-y-3 border-l-2 border-primary pl-6">
                   {section.bullets.map((item) => (
-                    <li key={item} className="text-sm leading-6 text-[#465249]">
+                    <li key={item} className="text-sm leading-6 text-foreground/90">
                       {item}
                     </li>
                   ))}
@@ -142,20 +143,20 @@ function ArticlePage() {
               )}
               {article.subsections?.[section.heading]?.map((subsection) => (
                 <div key={subsection.heading} className="mt-10">
-                  <h3 className="text-xl font-semibold tracking-[-.025em] text-navy">
+                  <h3 className="text-xl font-semibold tracking-[-.025em] text-foreground">
                     {subsection.heading}
                   </h3>
                   <div className="mt-4 space-y-4">
                     {subsection.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-base leading-8 text-[#59645f]">
+                      <p key={paragraph} className="text-base leading-8 text-muted-foreground">
                         {paragraph}
                       </p>
                     ))}
                   </div>
                   {subsection.bullets && (
-                    <ul className="mt-5 space-y-3 border-l-2 border-lime pl-6">
+                    <ul className="mt-5 space-y-3 border-l-2 border-primary pl-6">
                       {subsection.bullets.map((item) => (
-                        <li key={item} className="text-sm leading-6 text-[#465249]">
+                        <li key={item} className="text-sm leading-6 text-foreground/90">
                           {item}
                         </li>
                       ))}
@@ -165,26 +166,26 @@ function ArticlePage() {
               ))}
               {section.heading === "Spreadsheet vs SaaS vs custom software" &&
                 article.decisionTable && (
-                  <div className="mt-8 overflow-x-auto border border-[#dce1dd]">
+                  <div className="mt-8 overflow-x-auto rounded-lg border border-border/60">
                     <table className="w-full min-w-[34rem] border-collapse text-left">
-                      <thead className="bg-navy text-white">
+                      <thead className="bg-muted text-foreground">
                         <tr>
-                          <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em]">
+                          <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em] text-muted-foreground">
                             Situation
                           </th>
-                          <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em]">
+                          <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em] text-muted-foreground">
                             Best starting point
                           </th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="divide-y divide-border/40">
                         {article.decisionTable.map((row, index) => (
                           <tr
                             key={row.situation}
-                            className={index % 2 ? "bg-[#f3f5f3]" : "bg-white"}
+                            className={index % 2 ? "bg-muted/20" : "bg-card"}
                           >
-                            <td className="px-5 py-4 text-sm text-[#465249]">{row.situation}</td>
-                            <td className="px-5 py-4 text-sm font-semibold text-forest">
+                            <td className="px-5 py-4 text-sm text-foreground/90">{row.situation}</td>
+                            <td className="px-5 py-4 text-sm font-semibold text-primary">
                               {row.recommendation}
                             </td>
                           </tr>
@@ -198,10 +199,10 @@ function ArticlePage() {
         </div>
         {article.relatedLinks && (
           <aside
-            className="mt-16 border-y border-[#dce1dd] py-10"
+            className="mt-16 border-y border-border/60 py-10"
             aria-labelledby="related-reading"
           >
-            <h2 id="related-reading" className="text-xl font-semibold tracking-[-.025em] text-navy">
+            <h2 id="related-reading" className="text-xl font-semibold tracking-[-.025em] text-foreground">
               Explore more from BitLabs
             </h2>
             <ul className="mt-6 space-y-5">
@@ -209,38 +210,38 @@ function ArticlePage() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-forest"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
                   >
                     {item.label}
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
-                  <p className="mt-1 text-sm leading-6 text-[#69736d]">{item.note}</p>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.note}</p>
                 </li>
               ))}
             </ul>
           </aside>
         )}
         {article.faqs && (
-          <section className="mt-20 border-t border-[#dce1dd] pt-14">
-            <p className="eyebrow text-forest">Common questions</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-.035em] text-navy">
+          <section className="mt-20 border-t border-border/60 pt-14">
+            <p className="eyebrow text-primary">Common questions</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-.035em] text-foreground">
               Frequently asked questions
             </h2>
-            <div className="mt-8 divide-y divide-[#dce1dd]">
+            <div className="mt-8 divide-y divide-border/60">
               {article.faqs.map((faq) => (
                 <details key={faq.question} className="group py-5">
-                  <summary className="cursor-pointer list-none pr-8 text-base font-semibold text-navy marker:hidden">
+                  <summary className="cursor-pointer list-none pr-8 text-base font-semibold text-foreground marker:hidden hover:text-primary transition-colors">
                     {faq.question}
                   </summary>
-                  <p className="mt-3 pr-6 text-sm leading-7 text-[#59645f]">{faq.answer}</p>
+                  <p className="mt-3 pr-6 text-sm leading-7 text-muted-foreground">{faq.answer}</p>
                 </details>
               ))}
             </div>
           </section>
         )}
         {article.sources && (
-          <section className="mt-16 border-t border-[#dce1dd] pt-10">
-            <h2 className="text-xl font-semibold tracking-[-.025em] text-navy">
+          <section className="mt-16 border-t border-border/60 pt-10">
+            <h2 className="text-xl font-semibold tracking-[-.025em] text-foreground">
               Sources and further reading
             </h2>
             <ul className="mt-5 space-y-4">
@@ -250,25 +251,25 @@ function ArticlePage() {
                     href={source.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:underline"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                   >
                     {source.label}
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
-                  <p className="mt-1 text-sm leading-6 text-[#69736d]">{source.note}</p>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{source.note}</p>
                 </li>
               ))}
             </ul>
           </section>
         )}
-        <div className="mt-16 border-t border-[#dce1dd] pt-8">
-          <p className="mb-5 text-base leading-7 text-[#59645f]">
+        <div className="mt-16 border-t border-border/60 pt-8">
+          <p className="mb-5 text-base leading-7 text-muted-foreground">
             {article.closing ??
               "Have a business process that feels harder than it should? Talk to BitLabs about the process before talking about the technology."}
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-forest"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
           >
             Contact BitLabs <ArrowUpRight className="h-4 w-4" />
           </Link>
