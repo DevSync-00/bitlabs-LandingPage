@@ -11,7 +11,6 @@ import {
 import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 function NotFoundComponent() {
   return (
@@ -75,12 +74,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BitLabs Technology — Engineering the Future" },
+      { title: "BitLabs Technology — Software teams and technology services" },
       { name: "description", content: "BitLabs Technology PLC builds intelligent software, AI systems, and enterprise platforms for the next generation of business." },
       { name: "keywords", content: "BitLabs, BitLabs Technology, Enterprise Software, EdTech, Cybersecurity, Digital Transformation, software development, AI systems, cloud platforms" },
       { name: "author", content: "BitLabs Technology PLC" },
-      { property: "og:title", content: "BitLabs Technology — Engineering the Future" },
-      { property: "og:description", content: "Custom software, AI, cloud, and enterprise platforms engineered for tomorrow." },
+      { property: "og:title", content: "BitLabs Technology — Software teams and technology services" },
+      { property: "og:description", content: "Dedicated engineering teams, custom software, cloud, and managed technology services." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://bitlabsbuild.com" },
       { name: "twitter:card", content: "summary" },
@@ -121,15 +120,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <div className="relative" style={{ zIndex: 1 }}>
-          <Navbar />
-          <main className="min-h-screen pt-20">
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      <div className="relative" style={{ zIndex: 1 }}>
+        <Navbar />
+        <main className="min-h-screen pt-20">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }

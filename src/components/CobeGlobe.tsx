@@ -1,6 +1,5 @@
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
-import { useTheme } from "./ThemeProvider";
 
 interface Location {
   name: string;
@@ -84,9 +83,6 @@ export function CobeGlobe({ className = "" }: { className?: string }) {
   const pointerInteractionMovement = useRef<number>(0);
   const oscPhaseRef = useRef<number>(0);
   const freePhiRef = useRef<number>(HQ_CENTER_PHI);
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
   useEffect(() => {
     let width = 0;
     const canvas = canvasRef.current;
@@ -119,7 +115,7 @@ export function CobeGlobe({ className = "" }: { className?: string }) {
     window.addEventListener("resize", onResize);
     onResize();
 
-    const brandColor = hexToRgb01(isDark ? "#5C91FF" : "#1F53DB");
+    const brandColor = hexToRgb01("#1F53DB");
 
     const globe = createGlobe(canvas, {
       devicePixelRatio: 2,
@@ -127,11 +123,11 @@ export function CobeGlobe({ className = "" }: { className?: string }) {
       height: width * 2,
       phi: HQ_CENTER_PHI,
       theta: 0.3,
-      dark: isDark ? 1 : 0,
+      dark: 0,
       diffuse: 1.2,
       mapSamples: 16000,
       mapBrightness: 6,
-      baseColor: isDark ? [0.3, 0.3, 0.3] : [1, 1, 1],
+      baseColor: [1, 1, 1],
       markerColor: brandColor,
       glowColor: [1, 1, 1],
       markers: [
@@ -171,7 +167,7 @@ export function CobeGlobe({ className = "" }: { className?: string }) {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, [isDark]);
+  }, []);
 
   return (
     <div className={`relative flex items-center justify-center w-full max-w-[580px] aspect-square mx-auto ${className}`}>

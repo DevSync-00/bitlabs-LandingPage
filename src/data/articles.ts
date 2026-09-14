@@ -58,6 +58,190 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "software-agents-company-credentials-insider-risk",
+    seoTitle: "Software Agents With Company Credentials: An Identity Security Guide",
+    title: "The New Insider Risk: Software Agents With Company Credentials",
+    excerpt:
+      "How to give software agents useful access without creating invisible superusers: dedicated identities, least privilege, short-lived credentials, controlled tools, and complete audit trails.",
+    category: "Security",
+    read: "12 min read",
+    date: "14 September 2026",
+    publishedDate: "2026-09-14",
+    featuredImage: {
+      src: "/images/blog/software-agent-identity-security.png",
+      alt: "A software agent passing through identity, permission, approval, and audit checkpoints before accessing company systems",
+      concept:
+        "A controlled access path for a software agent, with distinct identity, scoped permissions, human approval, and traceable actions.",
+    },
+    intro:
+      "A software agent does not need malicious intent to behave like an insider threat. It only needs valid credentials, broad access, and the ability to act faster than a person can notice. As agents move from answering questions to reading inboxes, updating records, running code, and calling business APIs, identity becomes the boundary between useful automation and an unaccountable internal operator.",
+    sections: [
+      {
+        heading: "The risk begins with legitimate access",
+        paragraphs: [
+          "Traditional security programmes spend considerable effort detecting stolen credentials and unusual employee behaviour. Software agents complicate that model because their access may be legitimate, their activity may be automated, and the sequence of actions may be selected at runtime rather than written in a fixed script.",
+          "An agent connected to email, shared files, customer records, source code, and cloud services can combine individually reasonable permissions into a powerful operating position. A read permission in one system may supply information that changes what the agent attempts in another. A write permission intended for one narrow workflow may be reused when instructions, retrieved content, or tool output steer the agent elsewhere.",
+          "The practical question is therefore not whether the agent is trusted. It is whether every action is attributable, authorised, bounded, and recoverable when the agent is wrong or manipulated.",
+        ],
+      },
+      {
+        heading: "Give every agent its own identity",
+        paragraphs: [
+          "An agent should be a first-class identity in the organisation's access system. It should not borrow an administrator account, share a service credential with several automations, or quietly inherit all the permissions of the employee who launched it.",
+          "A dedicated identity makes ownership and lifecycle management possible. Security teams can see which agent accessed a resource, review its permissions, rotate or revoke its credentials, and disable it without interrupting unrelated services. The identity record should include a plain-language purpose, a named business owner, a technical owner, the environments where it operates, and the systems it is allowed to reach.",
+          "When an agent acts on behalf of a person, record both identities. The downstream system needs to know which agent executed the action and which user authorised the delegation. Collapsing both into a single user token removes the evidence needed to investigate mistakes and enforce different rules for people and software.",
+        ],
+        bullets: [
+          "One stable, lifecycle-managed identity per agent",
+          "No shared API keys across agents or environments",
+          "A named business owner and technical owner",
+          "Separate records for the acting agent and delegating user",
+          "A tested process for suspension, credential rotation, and retirement",
+        ],
+      },
+      {
+        heading: "Design permissions around tasks, not job titles",
+        paragraphs: [
+          "Human access models often start with departments and job roles. Agent permissions should start with the smallest task the workflow must complete. An agent that prepares an invoice exception report may need to read selected invoice and purchase-order fields. It does not need a general finance role, the ability to export the ledger, or permission to approve payment.",
+          "Scope access along three dimensions: resources, data, and operations. Define which tenant, workspace, repository, folder, table, or account the agent may reach; which classifications or records it may read; and whether it may read, create, update, delete, export, or administer. Separate discovery from execution wherever possible so that an agent gathering evidence does not automatically gain the authority to change what it finds.",
+          "Review aggregate access as well as individual roles. Five narrow permissions can combine into a high-impact capability when the agent can chain tools. Security review must consider the complete path the agent can take, not only each connector in isolation.",
+        ],
+      },
+      {
+        heading: "Keep elevated access temporary",
+        paragraphs: [
+          "Many workflows need occasional authority beyond the agent's normal baseline. Permanent privilege is the easy implementation, but it leaves a standing route to sensitive data and high-impact actions. Use just-in-time elevation instead: short-lived tokens, temporary role activation, or approval for one defined action.",
+          "The elevated grant should name the permitted operation, target resource, maximum scope, expiry time, and approving identity. It should end automatically when the task finishes or the time window closes. Creating a new identity for every task is usually unnecessary; keep the agent identity stable and make its entitlements temporary.",
+          "High-risk actions such as bulk export, deletion, money movement, credential changes, external publication, and access administration should require deterministic approval. The agent may prepare the action and supporting evidence, but a policy-enforced checkpoint—not a sentence in the prompt—should control execution.",
+        ],
+      },
+      {
+        heading: "Treat tools as security boundaries",
+        paragraphs: [
+          "An agent's effective power comes from its tools. A model that can draft SQL is less dangerous than one that can execute arbitrary SQL against production. A support agent that can propose a refund is different from one that can issue any refund to any account.",
+          "Expose small, purpose-built actions instead of broad administrative interfaces. Prefer createDraftTicket over unrestricted access to a ticketing API, or requestRefundWithinPolicy over a generic payment tool. Validate every argument outside the model, enforce limits in the receiving service, and reject values that fall outside policy even when the agent provides a persuasive explanation.",
+          "Maintain an explicit allowlist of tools for each agent version. Changes to tools, scopes, models, instructions, or connected data sources should trigger a security review because they can change the workflow's real authority even when its stated purpose remains the same.",
+        ],
+        bullets: [
+          "Expose only the operations required by the workflow",
+          "Validate identifiers, recipients, amounts, and record counts",
+          "Re-check identity and scope in every downstream service",
+          "Separate read tools from write and administrative tools",
+          "Require approval for destructive, financial, bulk, or access-changing actions",
+        ],
+      },
+      {
+        heading: "Credentials must stay outside the agent's reasoning context",
+        paragraphs: [
+          "Do not place API keys, refresh tokens, database passwords, or cloud credentials in prompts, files the agent can inspect, or tool output returned to the model. Store secrets in an approved secrets manager and let the execution layer attach credentials only when an authorised tool call is made.",
+          "Prefer short-lived, audience-restricted tokens over long-lived static keys. Bind tokens to the intended service and scope, rotate them automatically, and prevent one tool from forwarding credentials to another. Logs and error messages must redact secrets without removing the identity and decision data needed for investigation.",
+          "Assume that email, webpages, documents, tickets, and retrieved knowledge can contain hostile instructions. Prompt injection becomes materially more serious when the same agent can access credentials or call privileged tools. Untrusted content should inform the workflow, never redefine its authority.",
+        ],
+      },
+      {
+        heading: "Build an audit trail that answers operational questions",
+        paragraphs: [
+          "Recording the agent's final message is not an audit trail. Investigators need to reconstruct the chain from request to consequence: who initiated the workflow, which agent version ran, what identity and role it used, which resources it accessed, which tools it called, what arguments passed validation, which approvals were granted, and what changed downstream.",
+          "Use a correlation identifier across the orchestrator, tool gateway, and receiving systems. Keep timestamps, effective scopes, policy decisions, and before-and-after references for important writes. Monitor for behaviour that is valid at the API level but unusual for the agent's purpose, including unexpected destinations, rising export volume, repeated permission failures, activity outside normal workflows, or sudden use of rarely called tools.",
+          "Logs matter only if someone can act on them. Define who receives alerts, how quickly the agent can be paused, how tokens are revoked, and which actions can be reversed or compensated. Rehearse that response before production access expands.",
+        ],
+      },
+      {
+        heading: "Inventory agents before agent sprawl becomes normal",
+        paragraphs: [
+          "Organisations cannot govern agents they cannot find. Maintain a registry covering production, internal, experimental, vendor-hosted, and employee-created agents. Record owner, purpose, identity, tools, data sources, permissions, deployment environment, model provider, review date, and current status.",
+          "Discovery should include cloud identities, OAuth applications, automation platforms, API gateways, developer tools, and SaaS integrations. A pilot running under a personal token is still part of the organisation's attack surface. Expired experiments should be disabled and their credentials revoked rather than left dormant.",
+          "Require re-approval when an agent changes purpose, gains a new connector, moves into another environment, or begins acting for a different user population. Access reviews based only on a calendar will miss the moments when risk actually changes.",
+        ],
+      },
+      {
+        heading: "A practical 30-day control plan",
+        paragraphs: [
+          "Start with visibility rather than a new platform purchase. Identify agents and agent-like automations that hold company credentials, then rank them by access to sensitive data, write capability, external communication, financial impact, and ability to operate without review.",
+          "For the highest-risk workflows, replace shared credentials with dedicated identities, remove unused permissions, separate read and write authority, and put destructive or high-value actions behind enforced approval. Add a correlation ID and enough structured logging to trace one complete transaction across systems.",
+          "Finally, test shutdown. Disable the identity, revoke active tokens, remove queued work, and confirm that downstream systems reject further calls. A documented kill switch that has never been exercised is an assumption, not a control.",
+        ],
+        bullets: [
+          "Register every agent and name its owners",
+          "Replace shared and personal credentials",
+          "Reduce permissions to task-specific scopes",
+          "Move elevated actions to short-lived access",
+          "Constrain tools with allowlists and argument validation",
+          "Trace actions from requester to downstream change",
+          "Test revocation, rollback, and incident ownership",
+        ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "AI Agents Aren't Employees",
+        to: "/blog/ai-agents-business-workflows-safety",
+        note: "A broader guide to approval, permissions, failure handling, and accountability in business workflows.",
+      },
+      {
+        label: "Security and software delivery services",
+        to: "/services",
+        note: "See how BitLabs approaches secure software, cloud, data, and operational delivery.",
+      },
+      {
+        label: "Discuss an agent security review",
+        to: "/contact",
+        note: "Map identities, credentials, tools, and approval boundaries before expanding agent access.",
+      },
+    ],
+    closing:
+      "Software agents should be governed as active identities, not treated as features hidden inside an application. If an agent can use company credentials, it needs a clear owner, narrow authority, temporary privilege, controlled tools, and evidence for every consequential action.",
+    faqs: [
+      {
+        question: "Should an AI agent use an employee's account?",
+        answer:
+          "No. Give the agent a distinct, lifecycle-managed identity. If it acts on behalf of an employee, record both the agent and user identities so permissions and accountability remain clear.",
+      },
+      {
+        question: "Are short-lived credentials enough to secure an agent?",
+        answer:
+          "No. Short-lived credentials reduce exposure, but they must be combined with narrow scopes, controlled tools, downstream authorisation checks, monitoring, and enforced approval for high-impact actions.",
+      },
+      {
+        question: "What should an agent audit log contain?",
+        answer:
+          "Capture the initiating user, agent identity and version, effective role and scope, tool calls, validated arguments, approvals, affected resources, timestamps, outcomes, and a correlation identifier spanning every connected system.",
+      },
+      {
+        question: "How often should agent permissions be reviewed?",
+        answer:
+          "Review them on a regular schedule and whenever the workflow, tools, data sources, environment, model, or user population changes. Material capability changes should require re-approval before deployment.",
+      },
+    ],
+    sources: [
+      {
+        label: "NIST NCCoE: Identity and Authority of Software Agents",
+        url: "https://www.nist.gov/news-events/news/2026/02/new-concept-paper-identity-and-authority-software-agents",
+        note: "NIST's work on applying identity and authorisation standards to software and AI agents.",
+      },
+      {
+        label: "Microsoft: Least Privilege for AI Agents",
+        url: "https://learn.microsoft.com/en-us/security/zero-trust/sfi/least-privilege-for-ai-agents",
+        note: "Implementation guidance for dedicated identities, task-scoped roles, temporary entitlements, tool controls, and auditability.",
+      },
+      {
+        label: "Microsoft Security: Defense in Depth for Autonomous Agents",
+        url: "https://www.microsoft.com/en-us/security/blog/2026/05/14/defense-in-depth-autonomous-ai-agents/",
+        note: "Architecture patterns for explicit permissions, separate agent identities, deterministic review, and layered enforcement.",
+      },
+      {
+        label: "OWASP: MCP Security Cheat Sheet",
+        url: "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
+        note: "Practical controls for credentials, tool access, untrusted content, message attribution, and cross-system data flows.",
+      },
+      {
+        label: "Google Cloud: Agent Governance and Security",
+        url: "https://cloud.google.com/blog/topics/ai-infrastructure/state-of-ai-infrastructure-report-agent-governance-and-security",
+        note: "Current enterprise perspective on governing agents that access data and trigger actions across company systems.",
+      },
+    ],
+  },
+  {
     slug: "ai-agents-business-workflows-safety",
     seoTitle: "AI Agents for Business: A Practical Safety Guide",
     title: "AI Agents Aren't Employees: How to Use Them Safely in Real Business Workflows",

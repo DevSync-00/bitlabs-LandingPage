@@ -36,11 +36,8 @@ function Home() {
               <h1 className="text-balance text-[clamp(2.8rem,5.5vw,5rem)] font-semibold leading-[.98] tracking-[-.06em] text-foreground">
                 Build better technology. Move your business forward.
               </h1>
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
-                BitLabs helps organisations scale engineering capacity, build custom software, and modernise the systems they rely on. From embedded specialists to complete product delivery, we bring the people and expertise to get important work done.
-              </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/contact" className="button-primary">Talk to a technology expert <ArrowUpRight className="h-4 w-4" /></Link>
+                <Link to="/contact" className="button-primary">Talk to a technology expert</Link>
                 <Link to="/services" className="button-ghost">Explore our services</Link>
               </div>
               <p className="mt-8 max-w-lg border-l-2 border-primary/80 pl-6 text-sm leading-6 text-muted-foreground">
@@ -51,11 +48,9 @@ function Home() {
             {/* Interactive COBE 3D WebGL Globe */}
             <div className="relative flex flex-col items-center justify-center -mt-6 lg:-mt-12">
               <CobeGlobe className="w-full max-w-[580px]" />
-              <div className="mt-2 flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-muted-foreground">
-                <span className="flex items-center gap-1.5 rounded-full bg-card px-3 py-1 border border-border shadow-xs"><span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" /> Addis Ababa (HQ)</span>
-                <span className="flex items-center gap-1.5 rounded-full bg-card px-3 py-1 border border-border shadow-xs"><span className="h-2 w-2 rounded-full bg-indigo-500" /> London</span>
-                <span className="flex items-center gap-1.5 rounded-full bg-card px-3 py-1 border border-border shadow-xs"><span className="h-2 w-2 rounded-full bg-purple-500" /> New York</span>
-              </div>
+              <p className="mt-2 text-center text-xs font-medium text-muted-foreground">
+                Addis Ababa, Ethiopia (HQ)
+              </p>
             </div>
           </div>
 
@@ -78,7 +73,7 @@ function Home() {
 
       <section className="border-b border-border/50 bg-card text-card-foreground">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-8 text-muted-foreground sm:px-8 md:grid-cols-[1fr_3fr] md:items-center lg:px-10">
-          <p className="text-xs font-semibold uppercase tracking-[.18em] text-primary">Built for ambitious teams</p>
+          <p className="text-sm font-semibold text-primary">Industries we support</p>
           <div className="grid grid-cols-2 gap-5 text-sm font-semibold text-foreground sm:grid-cols-4">
             <span>Financial services</span><span>Healthcare</span><span>Logistics</span><span>Public sector</span>
           </div>
@@ -137,7 +132,7 @@ function Home() {
         </div>
       </section>
 
-      <ContactBand title="Let’s build the team your next chapter needs." text="Ready when you are. Talk to a technology expert today." />
+      <ContactBand title="Build the team your roadmap requires." text="Tell us what you need to deliver and where your current team needs support." />
     </div>
   );
 }

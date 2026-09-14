@@ -40,7 +40,7 @@ function Contact() {
               <p className="mt-2 text-sm text-slate-400">Addis Ababa, Ethiopia</p>
             </div>
           </div>
-          <div className="bg-card text-card-foreground border border-border/60 shadow-xl rounded-xl p-7 sm:p-10">
+          <div className="border border-border bg-card p-7 text-card-foreground sm:p-10">
             {sent ? (
               <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">

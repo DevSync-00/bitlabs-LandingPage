@@ -99,7 +99,18 @@ function ArticlePage() {
           </p>
         </div>
       </header>
-      <article className="mx-auto max-w-3xl my-12 bg-card text-card-foreground rounded-xl border border-border/60 p-8 sm:p-12">
+      {article.featuredImage && (
+        <figure className="mx-auto mt-12 max-w-5xl px-5 sm:px-8">
+          <img
+            src={article.featuredImage.src}
+            alt={article.featuredImage.alt}
+            width={1600}
+            height={900}
+            className="h-auto w-full border border-border"
+          />
+        </figure>
+      )}
+      <article className="mx-auto my-12 max-w-3xl border border-border bg-card p-8 text-card-foreground sm:p-12">
         <p className="text-xl leading-9 text-foreground">{article.intro}</p>
         {article.video && (
           <figure className="mt-12">
@@ -276,8 +287,8 @@ function ArticlePage() {
         </div>
       </article>
       <ContactBand
-        title="Need a team that can take software from idea to launch?"
-        text="BitLabs designs and engineers web, mobile, desktop and cloud products for ambitious organisations."
+        title="Need a second opinion on a software or security decision?"
+        text="Bring us the system, constraints, and risks. We will help you define a practical next step."
       />
     </div>
   );

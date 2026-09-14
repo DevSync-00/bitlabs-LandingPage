@@ -47,7 +47,7 @@ export function Logo({ className = "", height = 36 }: Props) {
         rx="2"
         stroke="currentColor"
         strokeWidth="4"
-        className="text-foreground dark:text-white"
+        className="text-foreground"
         variants={{
           initial: { pathLength: 0, opacity: 0 },
           animate: { pathLength: 1, opacity: 1, transition: { duration: 0.7, delay: 0.15, ease: "easeInOut" } },
