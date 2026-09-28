@@ -58,6 +58,250 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "first-30-days-software-development-partner",
+    seoTitle: "First 30 Days With a Software Development Partner: Client Playbook",
+    title: "The First 30 Days With a Software Development Partner: A Practical Client Playbook",
+    excerpt:
+      "A week-by-week playbook for turning a new software partnership into a working delivery system, with clear owners, secure access, a real first release, and evidence for what comes next.",
+    category: "Software delivery",
+    read: "14 min read",
+    date: "28 September 2026",
+    publishedDate: "2026-09-28",
+    featuredImage: {
+      src: "/images/blog/first-30-days-software-development-partner.png",
+      alt: "Four stages of a software partnership: alignment, secure access, tested delivery, and evidence-based planning",
+      concept:
+        "A four-stage path through the first month of a software partnership, from a shared outcome to secure access, a tested increment, and the next delivery decision.",
+    },
+    intro:
+      "The first month with a software development partner should produce more than a busy calendar and a polished roadmap. By day 30, both sides should be able to point to a shared product outcome, a working delivery path, a small piece of usable software, and evidence that makes the next investment decision easier. This playbook explains what the client must do—not just what the development partner should promise—to make that happen.",
+    sections: [
+      {
+        heading: "Define what day 30 must prove",
+        paragraphs: [
+          "Treat the first month as a test of the partnership and the delivery system, not as a race to complete a large feature list. The objective is to remove the biggest uncertainties in the order that they threaten the work: unclear business priority, missing access, hidden technical constraints, slow decisions, and an untested route to users.",
+          "A useful day-30 review deals in evidence. The team can demonstrate a thin, tested increment in a realistic environment. The client can explain what was learned from users or operational stakeholders. Open risks have owners. The next body of work is ordered, small enough to discuss honestly, and tied to the product outcome. If the only evidence is a slide deck, ticket count, or percentage-complete report, the partnership has not yet established delivery capability.",
+        ],
+        bullets: [
+          "One measurable product outcome and a named client owner",
+          "A documented route from code change to a realistic test environment",
+          "A small end-to-end increment reviewed by the people who will use or operate it",
+          "A visible record of decisions, assumptions, dependencies, and risks",
+          "A 30- to 60-day plan based on evidence from the first delivery cycle",
+        ],
+      },
+      {
+        heading: "Before day one: remove avoidable waiting",
+        paragraphs: [
+          "The most expensive first-week problem is rarely coding. It is a team waiting for repository access, a stakeholder interview, a test account, or a decision nobody knows how to obtain. Start the partnership before the kickoff by assigning a client product owner with authority to order work and make routine scope decisions. Name a separate executive sponsor for budget or strategic escalation; do not make the sponsor the daily decision bottleneck.",
+          "Send a short context pack, not a document archive. Include the business problem, target users, current workflow, known constraints, relevant architecture, contractual commitments, and links to the systems that contain the current truth. Mark assumptions as assumptions. The partner should arrive ready to question the brief, not merely repeat it back.",
+          "Prepare access through named accounts and least-privilege roles. Avoid shared credentials and production access by default. Agree how secrets are issued, which data may be used outside production, what must never enter tickets or chat, and who can approve elevated access. Book the first two weeks of user and stakeholder conversations before engineers need them.",
+        ],
+        bullets: [
+          "Name the product owner, sponsor, technical contact, security contact, and operational owner",
+          "Create individual accounts for source control, delivery tools, design files, test systems, and documentation",
+          "Provide sanitized test data and the process for requesting additional access",
+          "Schedule kickoff, workflow walkthroughs, technical orientation, and the first review",
+          "State non-negotiable dates, regulations, integrations, budgets, and contractual boundaries",
+        ],
+      },
+      {
+        heading: "Days 1–5: align on the problem and expose reality",
+        paragraphs: [
+          "Use the kickoff to create a working agreement, not to read the proposal aloud. Restate the product outcome in plain language: whose behaviour or operating result should change, by how much, and how will the team observe it? Then separate the first-month outcome from fixed scope. Scope may change as the team learns; the outcome provides the stable direction for those trade-offs.",
+          "Walk through the current process with the people who perform it. Observe a real case from beginning to end and capture workarounds, handoffs, waiting, failure paths, and data sources. A workflow diagram made only by managers will often omit the spreadsheet, inbox, phone call, or manual approval on which the process actually depends.",
+          "Run a technical orientation around one representative user journey. Trace the request through interfaces, services, integrations, data stores, deployment, monitoring, and support. Record what is known, what is inferred, and what must be tested. Finish the week with an ordered backlog for the immediate goal—not a catalogue of every idea the organisation has collected.",
+        ],
+        bullets: [
+          "Product outcome, user group, baseline, target, and review date",
+          "Decision log with owner and due date for every unresolved choice",
+          "Current-state workflow including exceptions and manual steps",
+          "System map, environments, integrations, sensitive data, and operational constraints",
+          "A first vertical slice small enough to build, test, and review within days",
+        ],
+      },
+      {
+        heading: "Days 6–10: make delivery repeatable",
+        paragraphs: [
+          "The second week should establish the path that every later change will travel. A developer must be able to make a small change, obtain review, run automated checks, deploy it to a realistic non-production environment, and see whether it behaves correctly. If this path is fragile or undocumented, expose that now rather than building a month of work on top of it.",
+          "Agree a definition of done that reflects the product's risk. At minimum, it should cover peer review, relevant tests, security checks, accessibility where applicable, deployment, observability, and updated operating or user guidance. ‘Development complete’ is not done if the change cannot be tested, released, supported, or understood by the client.",
+          "Turn security and privacy obligations into testable requirements. Identify data classification, retention, audit, authentication, authorization, dependency, and recovery needs. A generic promise to follow best practice is not a control; a named requirement with an owner and verification method is.",
+        ],
+        bullets: [
+          "Branch, review, test, and deployment conventions recorded in the repository",
+          "A working non-production environment and an agreed production-release authority",
+          "Definition of done applied to the first slice",
+          "Security, privacy, accessibility, and operational acceptance criteria",
+          "Logging and error reporting sufficient to diagnose the first user journey",
+        ],
+      },
+      {
+        heading: "Days 11–20: deliver one narrow outcome end to end",
+        paragraphs: [
+          "Choose a slice that crosses the real system but limits business exposure. It might allow one user type to submit a request, complete one integration-backed lookup, or move one case through a simplified path. Avoid a horizontal slice such as ‘build the database’ or ‘finish the frontend’; it can consume the month without proving that the pieces work together.",
+          "Keep batches small enough to review and reverse. The partner should integrate changes frequently, while the client product owner answers questions and makes scope decisions quickly. When a decision is delayed, record the blocked work and move to another ready item rather than hiding the delay inside a status colour.",
+          "Put the increment in front of representative users or frontline operators before calling it successful. Ask them to perform a realistic task. Watch where they hesitate, what information they need, and whether the result fits the surrounding workflow. Capture observations separately from feature requests; one user request is a signal to investigate, not an automatic commitment.",
+        ],
+        bullets: [
+          "Demonstrate working software in the target test environment, not a design prototype alone",
+          "Test the unhappy path: invalid input, missing permission, unavailable dependency, and retry",
+          "Record user observations, technical findings, defects, and new assumptions",
+          "Update scope and sequencing in response to evidence",
+          "Confirm who could release, monitor, support, and reverse the change",
+        ],
+      },
+      {
+        heading: "Days 21–30: test the operating relationship",
+        paragraphs: [
+          "The final ten days are not a presentation phase. Use them to repeat the delivery path, address the most important weakness discovered in the first slice, and test whether the partnership works when something changes. Introduce a realistic priority shift or failure scenario and observe how quickly the team can assess impact, make a decision, and recover without bypassing controls.",
+          "Review the month with evidence from the product and the way of working. What reached a user or realistic environment? What was learned? Where did work wait? Which decisions took longest? Which assumption is now false? Which risks changed? Do not use story points, hours billed, or lines of code as evidence of value.",
+          "Build the next plan from what is now known. Keep near-term work detailed and later work coarse. Name the outcome for the next period, the next important risk to retire, expected user-feedback points, and the conditions under which scope, staffing, or architecture will be reconsidered.",
+        ],
+        bullets: [
+          "Demo and, where safe, release a usable increment",
+          "Review delivery delay, defects, user evidence, operational readiness, and unresolved risk",
+          "Confirm repository, cloud, documentation, analytics, and design access remain client-visible",
+          "Agree the next product goal and an ordered near-term backlog",
+          "Decide explicitly whether to continue, change the team or approach, pause, or stop",
+        ],
+      },
+      {
+        heading: "Use a cadence that accelerates decisions",
+        paragraphs: [
+          "Meetings earn their place only when they create a decision, reveal evidence, or coordinate work. A 15-minute daily coordination session can expose blockers, but it does not replace written status. Keep the backlog, risks, decisions, and delivery state visible so stakeholders do not need a meeting to discover basic facts.",
+          "A practical cadence is a weekly product review with working software, a short planning and trade-off session, and a fortnightly retrospective focused on the delivery system. Add specialist sessions only when the work requires them. Send decisions and actions immediately after each session, with one owner and one due date for each action.",
+        ],
+        bullets: [
+          "Daily: blockers and coordination; cancel when asynchronous updates are sufficient",
+          "Weekly: working-software review with users or operational stakeholders",
+          "Weekly: product-owner decisions on order, scope, and acceptance",
+          "Fortnightly: retrospective with one or two owned improvements",
+          "Monthly: sponsor review of outcomes, risks, spend, and the next investment decision",
+        ],
+      },
+      {
+        heading: "Measure flow, quality, and learning—not activity",
+        paragraphs: [
+          "The first month is too short for a mature performance trend, but it is long enough to establish a baseline. Select a small set of measures that reveal whether work can move safely and whether the product is becoming more useful. Every measure should have a decision attached to it; if nobody would act when it changes, remove it.",
+          "Track elapsed time from work started to working in the test or production environment, time lost to client and partner blockers, change failure or escaped defects, and recovery time when something breaks. Pair delivery measures with product evidence such as task completion, processing time, conversion, error rate, support demand, or direct user observation. Report ranges and context rather than manufacturing precision from a few data points.",
+        ],
+        bullets: [
+          "Flow: cycle time, blocked time, batch size, and deployment frequency",
+          "Quality: failed changes, escaped defects, automated-check coverage for critical paths, and recovery time",
+          "Product: one or two measures tied directly to the stated outcome",
+          "Learning: assumptions tested, user sessions completed, and decisions changed by evidence",
+          "Commercial: spend to date, forecast range, and material scope or dependency changes",
+        ],
+      },
+      {
+        heading: "Watch for failure signals early",
+        paragraphs: [
+          "A strong partner will ask uncomfortable questions, make uncertainty visible, and show unfinished software early. A weak relationship can look smoother because risk is kept out of sight until a deadline. Use the first month to inspect behaviour under pressure, not just the quality of the weekly presentation.",
+          "Raise concerns when the partner cannot explain how today's work supports the outcome, when access or decisions remain blocked without escalation, or when progress is described only through activity. The client should expect the same scrutiny: a partner cannot compensate indefinitely for an absent product owner, unavailable users, or decisions repeatedly reopened by people outside the agreed governance.",
+        ],
+        bullets: [
+          "No working software in a shared environment by the end of the month",
+          "Large batches remain ‘almost done’ while nothing can be reviewed end to end",
+          "The partner holds exclusive access to code, infrastructure, designs, or delivery records",
+          "Security, data migration, support, and integration risks are deferred without owners",
+          "Demos avoid errors and exceptions or rely on prepared data that users never encounter",
+          "The client product owner cannot make a routine decision within one business day",
+        ],
+      },
+      {
+        heading: "The client’s day-30 checklist",
+        paragraphs: [
+          "Use this checklist as an exit test, not a compliance exercise. A missing item does not automatically mean the partnership has failed, but it should produce an explicit risk, owner, and recovery action. Context may justify a different sequence; silence should not.",
+        ],
+        bullets: [
+          "We can state the current product goal, target user, baseline, and intended result in one paragraph",
+          "One client product owner controls ordering and routine scope decisions",
+          "The team has observed the real workflow and documented its exceptions",
+          "Engineers can take a small change through review, automated checks, and deployment",
+          "The definition of done includes product, security, operational, and documentation needs",
+          "Representative users have tried a working increment and their observations are recorded",
+          "Important assumptions, dependencies, decisions, and risks have owners",
+          "The client can access the code, environments, documentation, designs, and delivery records it owns",
+          "Measures cover flow, quality, product outcome, learning, and commercial position",
+          "The next investment decision is based on evidence from the month rather than the original sales proposal",
+        ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "In-House vs. Dedicated Team",
+        to: "/blog/in-house-vs-dedicated-team-hidden-costs-scaling-2026",
+        note: "Compare the operating costs and trade-offs behind in-house, dedicated, and hybrid engineering capacity.",
+      },
+      {
+        label: "Why Companies Outsource Software Development to Africa",
+        to: "/blog/why-companies-outsource-software-development-africa-2026",
+        note: "Evaluate an African software partner on delivery capability, communication, continuity, and total cost.",
+      },
+      {
+        label: "Discuss your first delivery month",
+        to: "/contact",
+        note: "Bring BitLabs your outcome, constraints, and current delivery risks to shape a practical start.",
+      },
+    ],
+    closing:
+      "The first 30 days should make the work less mysterious. Both sides should understand the product better, move a small change safely through the system, and know exactly what evidence justifies the next investment. That is a stronger foundation than an impressive roadmap built before the team has learned how the business and technology actually behave.",
+    faqs: [
+      {
+        question: "Should a software partner write code in the first week?",
+        answer:
+          "Usually, yes—but the first change may be a deployment test, observability improvement, technical spike, or very small product slice. The purpose is to exercise the real delivery path while the team learns, not to maximize feature volume immediately.",
+      },
+      {
+        question: "Who should own the product backlog when working with an external team?",
+        answer:
+          "One accountable client product owner should control the product goal, work ordering, and routine scope decisions. The partner should contribute discovery, technical options, estimates, and challenge, but it should not decide business priority by default.",
+      },
+      {
+        question: "What should a client provide before development begins?",
+        answer:
+          "Provide a named decision-maker, access through individual least-privilege accounts, representative users, a concise context pack, known constraints, sanitized test data, and time from technical, security, and operational contacts.",
+      },
+      {
+        question: "How do we judge whether the first month was successful?",
+        answer:
+          "Look for a tested end-to-end increment, direct user or operator evidence, a repeatable delivery path, visible risks and decisions, client access to its assets, and a better-informed next plan. Ticket volume and hours consumed do not establish success on their own.",
+      },
+      {
+        question: "What if the product cannot safely reach production within 30 days?",
+        answer:
+          "Use a realistic non-production environment and demonstrate that the increment meets its defined checks. Also prove the intended release, monitoring, support, and rollback path as far as the constraints allow, and record any remaining production gate with an owner and date.",
+      },
+    ],
+    sources: [
+      {
+        label: "The Scrum Guide",
+        url: "https://scrumguides.org/scrum-guide.html",
+        note: "Primary guidance on the Product Goal, accountable Product Owner, ordered Product Backlog, inspectable increments, and Definition of Done.",
+      },
+      {
+        label: "DORA: Working in Small Batches",
+        url: "https://dora.dev/capabilities/working-in-small-batches/",
+        note: "Research-backed guidance on small, independent, valuable, and testable units of work that shorten feedback loops.",
+      },
+      {
+        label: "DORA: Customer Feedback",
+        url: "https://dora.dev/capabilities/customer-feedback/",
+        note: "Evidence for integrating customer feedback with product and software-delivery work rather than treating delivery output as the goal.",
+      },
+      {
+        label: "GOV.UK: Working With Contractors or Third Parties",
+        url: "https://www.gov.uk/service-manual/the-team/working-contractors-third-parties",
+        note: "Practical public-sector guidance on supplier capability, knowledge transfer, delivery quality, and cyber-security obligations.",
+      },
+      {
+        label: "OWASP Application Security Verification Standard",
+        url: "https://owasp.org/projects/asvs",
+        note: "A concrete basis for defining and verifying web-application security requirements instead of relying on generic assurances.",
+      },
+    ],
+  },
+  {
     slug: "software-agents-company-credentials-insider-risk",
     seoTitle: "Software Agents With Company Credentials: An Identity Security Guide",
     title: "The New Insider Risk: Software Agents With Company Credentials",
