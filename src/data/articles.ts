@@ -58,6 +58,240 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "recover-stalled-software-project-10-day-plan",
+    seoTitle: "How to Recover a Stalled Software Project in 10 Working Days",
+    title: "Your Software Project Is Stalling: A Practical Recovery Plan for the Next 10 Working Days",
+    excerpt:
+      "A ten-day recovery runbook for finding the real delivery constraint, stopping low-value work, shipping one narrow slice, and making an evidence-based decision about what happens next.",
+    category: "Software delivery",
+    read: "13 min read",
+    date: "29 September 2026",
+    publishedDate: "2026-09-29",
+    featuredImage: {
+      src: "/images/blog/recover-stalled-software-project-10-day-plan.png",
+      alt: "A software team simplifying tangled, blocked work into a clear path toward a tested release",
+      concept:
+        "A congested delivery system being reduced to one visible, testable path from diagnosis to a stable software release.",
+    },
+    intro:
+      "A stalled software project rarely needs another status meeting. It needs a short period in which the organisation stops pretending that motion equals progress, identifies where work actually waits, and proves that one valuable change can move safely from decision to user. The next ten working days will not repair every architectural or organisational problem. They can, however, restore enough truth and delivery capability to decide whether the project should continue, change shape, or stop.",
+    sections: [
+      {
+        heading: "First, establish whether the project is actually stalled",
+        paragraphs: [
+          "A missed estimate does not automatically mean a project is in crisis. Software work contains uncertainty, and a team may discover information that changes the sensible plan. The project is stalled when important work repeatedly enters the system but does not reach a usable state, nobody can give a testable explanation for the delay, and the response is to add more tasks, people, meetings, or reporting.",
+          "Use observable signals rather than mood. Look for work ageing without review, growing queues, features that are ‘almost done’ across several reporting periods, releases that depend on heroics, recurring defects, decisions repeatedly reopened, or a roadmap that changes while the same underlying constraints remain. If users have seen nothing new and the team cannot demonstrate an end-to-end path through the system, activity data is not reassuring.",
+        ],
+        bullets: [
+          "No usable increment has reached users or a realistic environment for several weeks",
+          "Started work keeps rising while completed work remains flat",
+          "The oldest open items are becoming older, not closer to completion",
+          "Dependencies and approvals have no named owner or decision date",
+          "Teams report percentage complete, hours, or ticket counts but cannot show working outcomes",
+        ],
+      },
+      {
+        heading: "Set up a ten-day recovery window",
+        paragraphs: [
+          "Give the recovery a fixed boundary and a named recovery lead. This person does not need to be the most senior manager, but must be able to convene product, engineering, design, operations, security, and the relevant business owner. Their job is to keep evidence visible, obtain decisions, and protect the recovery slice from new intake.",
+          "Freeze new feature starts for ten working days. Production incidents, critical security work, and legal obligations still take precedence, but every exception should be explicit. The freeze is not punishment and it is not a licence to stop serving users. It creates enough capacity to finish, learn, and expose the constraint that normal prioritisation has hidden.",
+          "Publish the recovery question in one sentence: ‘Can this team take one defined, valuable change through build, test, release, and observation within ten working days?’ That question is intentionally narrower than ‘Can we save the whole project?’ A credible answer requires working evidence, not confidence or blame.",
+        ],
+        bullets: [
+          "Recovery lead with authority to escalate blockers",
+          "One business decision-maker available each working day",
+          "One shared board containing all active and blocked work",
+          "A written exception rule for incidents, security, and mandatory commitments",
+          "A decision review booked for the end of day ten",
+        ],
+      },
+      {
+        heading: "Day 1: replace the status narrative with evidence",
+        paragraphs: [
+          "Bring the people doing the work into a 90-minute evidence review. Do not begin with the roadmap. Start with the last change that reached a user and trace what happened after the request was made: decisions, design, implementation, review, testing, environments, approval, release, and support. Record elapsed time at each stage and, more importantly, the periods when the work waited.",
+          "Then inspect every item currently described as in progress. For each one, ask what observable event would make it done, when it last changed state, what it is waiting for, and who can remove that wait. If nobody can answer, return the item to the backlog until it is understood. Do not preserve fictional progress to protect a report.",
+          "Finish with a baseline the team can verify: date of last releasable increment, number of active items, age of the oldest item, known blockers, current defect or incident load, and whether a repeatable deployment path exists. A rough truthful baseline is more useful than a precise metric assembled from inconsistent workflows.",
+        ],
+      },
+      {
+        heading: "Day 2: diagnose the constraint, not the loudest symptom",
+        paragraphs: [
+          "Group the evidence into four possible constraints: direction, decision, delivery, and technical health. A direction constraint means the team cannot identify the user outcome or choose between competing priorities. A decision constraint means the answer exists but authority is unclear or unavailable. A delivery constraint means too much work, too many handoffs, or an unreliable release path prevents completion. A technical-health constraint means defects, coupling, environment instability, or missing tests make every change unsafe.",
+          "Most stalled projects contain all four, but one usually governs the current rate of progress. Adding developers to a decision queue will enlarge the queue. Rewriting architecture will not fix an absent product owner. A new project-management tool will not make a manual release safe. Select the constraint that, if relieved, would allow the recovery slice to move furthest.",
+          "Write a falsifiable diagnosis: ‘Work waits an average of four days for acceptance decisions because three stakeholders can independently reopen scope.’ This can be tested. ‘Communication is poor’ cannot. Record contributing conditions separately so the team does not turn one cause into a simplistic root-cause story.",
+        ],
+        bullets: [
+          "Direction: no stable outcome, priority, or definition of success",
+          "Decision: unclear authority, unavailable approver, or repeated reversals",
+          "Delivery: excessive work in progress, handoffs, dependencies, or release gates",
+          "Technical health: fragile architecture, environment drift, defects, or inadequate tests",
+          "External: vendor, regulatory, procurement, or platform dependency outside the team's control",
+        ],
+      },
+      {
+        heading: "Day 3: stop work deliberately",
+        paragraphs: [
+          "Reducing work in progress is the fastest way to create finishing capacity. Keep only items required to protect the live service and the one recovery slice. Place everything else into one of three states: queued for later review, blocked with an owner and decision date, or stopped. ‘Paused’ should not become a polite label for work nobody intends to resume.",
+          "Stopping an item does not erase the money already spent. It prevents sunk cost from consuming more. Preserve the useful evidence: current branch or artifact, decisions, unfinished risks, environment requirements, and the conditions under which restarting would make sense. Close speculative branches that will become dangerous to merge, but do so through the team's normal review and retention process.",
+          "Set an explicit work-in-progress limit for the recovery window. The number should be uncomfortably small—often one product slice plus urgent operational work. When someone becomes free, they should help finish, test, document, or unblock the active slice rather than start another one.",
+        ],
+      },
+      {
+        heading: "Day 4: choose one recovery slice",
+        paragraphs: [
+          "The recovery slice must be valuable enough to matter and small enough to complete. Choose one user, one need, one path, and one observable result. Prefer a change that crosses the real delivery system and tests the diagnosed constraint. A backend component with no user or operational outcome may create code without proving recovery.",
+          "Write acceptance examples before implementation. Include the normal case, the most likely failure case, permission behaviour, the signal that confirms success, and how the change can be disabled or reversed. Remove optional variants, migration breadth, visual polish, and secondary integrations unless they are essential to testing the core risk.",
+          "Estimate the slice by walking through the work, not by negotiating a comforting number. If the team cannot explain how it will be built, tested, deployed, and observed within the remaining six days, cut it again. The recovery window is a diagnostic; oversized scope destroys the diagnostic.",
+        ],
+        bullets: [
+          "One user or operator with a real need",
+          "One end-to-end path through the relevant system",
+          "Acceptance examples covering success and a meaningful failure",
+          "A safe release, feature-toggle, or rollback approach",
+          "A result that can be observed without relying on developer testimony",
+        ],
+      },
+      {
+        heading: "Days 5–7: swarm, integrate, and expose problems daily",
+        paragraphs: [
+          "Organise around finishing the slice rather than keeping every specialist busy. Product resolves ambiguity, engineers work across boundaries, quality specialists shape tests before the end, and operations verifies deployment and observability. If a handoff must occur, make the receiver part of the work before the artifact is ‘ready’ for them.",
+          "Integrate changes at least daily and deploy to the most realistic safe environment available. Keep changes small enough to review. Run the relevant automated checks and a smoke test of the critical path after deployment. When the path fails, record the failure and recovery time; that information is part of the result, not an embarrassment to hide from the day-ten review.",
+          "Hold a short daily recovery review around evidence: what reached a new verified state, what is waiting, what decision is required today, and whether the slice must become smaller. Do not ask each person to narrate their activity. Escalate an unresolved external blocker on the same day rather than carrying it silently into tomorrow.",
+        ],
+      },
+      {
+        heading: "Day 8: test the whole path under realistic conditions",
+        paragraphs: [
+          "Test the slice as a user or operator experiences it, including authentication, data, integrations, notifications, logging, and support information. Prepared demo data can hide the exact boundary failures that caused the project to stall. Use representative, legally appropriate test data and include a likely dependency failure or invalid input.",
+          "Verify operational readiness in proportion to risk. The team should know which version is deployed, how success and failure appear in monitoring, who can release, who can roll back, and what happens to in-flight data. If production release is impossible within the window, exercise the route as far as possible in a production-like environment and identify the remaining gate precisely.",
+          "Invite a small number of representative users or frontline staff to attempt the task without coaching. Observe behaviour. Separate defects, usability findings, and new feature ideas. Fix anything that prevents the slice from testing its intended outcome; place non-critical improvements back into the ordered backlog.",
+        ],
+      },
+      {
+        heading: "Day 9: release safely and watch what happens",
+        paragraphs: [
+          "Release to the smallest responsible audience: an internal operator, a pilot group, a single tenant, or a controlled percentage of traffic. The objective is not a ceremonial production deployment. It is to obtain real evidence while limiting impact. If the system cannot segment exposure, use the safest valid alternative and record that limitation as a technical risk.",
+          "Monitor the user outcome and the system. Confirm that the task can be completed, data is correct, important events are logged, and support knows what changed. Set the rollback or disable threshold before release so the team does not debate acceptable harm during an incident.",
+          "If the release fails, recover first and learn second. A rollback can still prove that deployment, detection, and recovery work. Document the timeline, impact, contributing conditions, and owned follow-up actions without searching for an individual to blame.",
+        ],
+      },
+      {
+        heading: "Day 10: make a decision, not another recovery plan",
+        paragraphs: [
+          "Review the original diagnosis against the evidence. Did the slice reach its intended audience? How long did it spend active and waiting? Which constraint governed progress? What broke? What did users do? Could the team release and recover safely? Compare these answers with the day-one baseline, while acknowledging that one slice is evidence, not a statistically mature trend.",
+          "Choose one of four outcomes. Continue when the system can deliver and the remaining risks are proportionate. Continue with conditions when specific gaps have owners, dates, and investment. Restructure when authority, team shape, commercial arrangements, or architecture prevent safe progress. Stop when the outcome no longer justifies the likely cost or the critical constraint cannot be changed.",
+          "Do not extend the recovery window simply because the decision is uncomfortable. If evidence is missing, state exactly what is missing and why. Any additional experiment should have a narrower question, fixed cost, named owner, and decision date.",
+        ],
+        bullets: [
+          "Continue: the slice completed, learning is credible, and the next work is understood",
+          "Continue with conditions: progress is viable after named corrective actions",
+          "Restructure: the present team, governance, contract, or technical approach cannot support delivery",
+          "Stop: expected value no longer outweighs cost and risk",
+        ],
+      },
+      {
+        heading: "What the recovery report should contain",
+        paragraphs: [
+          "Keep the report short enough to use. It should show the outcome, evidence, decision, and owners—not reconstruct every meeting. Link to working artifacts rather than copying them into a document that will immediately become stale.",
+          "Separate facts from interpretations. ‘The change waited three days for a security decision’ is a fact. ‘Security is obstructive’ is an accusation and usually an incomplete diagnosis. Record why the wait occurred, what control was needed, and how future work can arrive ready for review.",
+        ],
+        bullets: [
+          "The recovery question and day-one baseline",
+          "The tested diagnosis and important contributing conditions",
+          "What was stopped, completed, released, and learned",
+          "Cycle time, blocked time, failure and recovery evidence, and user observations",
+          "Remaining risks, each with owner, action, and decision date",
+          "The continue, condition, restructure, or stop decision and its rationale",
+        ],
+      },
+      {
+        heading: "Do not confuse recovery with permanent heroics",
+        paragraphs: [
+          "A focused ten-day effort can restore flow, but the organisation must not turn emergency concentration into the normal operating model. Sustainable delivery needs clear product authority, controlled work in progress, small changes, reliable environments, automated checks, user feedback, and time to improve technical health.",
+          "After the decision, keep the useful constraints from the recovery: a small number of active items, visible blocked time, daily access to a decision-maker, frequent integration, and reviews based on working software. Remove the emergency hours, exceptional escalation routes, and dependence on particular individuals. A project is recovered when ordinary systems can produce results—not when exceptional people can rescue it repeatedly.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "The First 30 Days With a Software Development Partner",
+        to: "/blog/first-30-days-software-development-partner",
+        note: "Set up ownership, access, delivery, and evidence correctly before avoidable delays become normal.",
+      },
+      {
+        label: "In-House vs. Dedicated Team",
+        to: "/blog/in-house-vs-dedicated-team-hidden-costs-scaling-2026",
+        note: "Assess whether the current team model still fits the product's need for speed, continuity, and control.",
+      },
+      {
+        label: "Discuss a stalled delivery programme",
+        to: "/contact",
+        note: "Bring BitLabs the current workflow, evidence, and constraints for an independent recovery assessment.",
+      },
+    ],
+    closing:
+      "Recovery begins when the project stops defending its plan and starts testing its ability to deliver. Ten focused working days can reveal the governing constraint, restore a thin path to users, and replace hopeful reporting with a decision the organisation can defend.",
+    faqs: [
+      {
+        question: "Can a stalled software project really be recovered in ten working days?",
+        answer:
+          "Ten days is enough to diagnose the current constraint, reduce work in progress, and test one narrow delivery path. It is not enough to resolve every architectural or organisational problem. The deliverable is evidence and a defensible next decision, not a claim that the entire project is fixed.",
+      },
+      {
+        question: "Should we add more developers to catch up?",
+        answer:
+          "Not until the constraint is clear. Additional developers can worsen queues, coordination, and onboarding when work is blocked by decisions, unclear direction, fragile environments, or an unsafe release process. Add capacity only where evidence shows capacity is the limiting factor.",
+      },
+      {
+        question: "What work should continue during the recovery window?",
+        answer:
+          "Continue work required to protect users and the live service, address critical security issues, or meet genuinely immovable legal obligations. Make every exception visible. Pause new feature starts and focus the remaining capacity on finishing the recovery slice.",
+      },
+      {
+        question: "What if the team cannot release to production in ten days?",
+        answer:
+          "Deploy to the most realistic safe environment, exercise the release path as far as possible, and identify the exact remaining gate, owner, and evidence required. An unspecified claim that production is difficult is not a useful result.",
+      },
+      {
+        question: "When should a stalled software project be stopped?",
+        answer:
+          "Stop when the expected user or business value no longer justifies the remaining cost and risk, or when a critical constraint cannot be changed within acceptable bounds. Past expenditure is not a reason to continue; it is already spent.",
+      },
+    ],
+    sources: [
+      {
+        label: "DORA: Work in Process Limits",
+        url: "https://dora.dev/capabilities/wip-limits/",
+        note: "Research-backed guidance on limiting concurrent work to expose constraints and improve software-delivery flow.",
+      },
+      {
+        label: "DORA: Visibility of Work in the Value Stream",
+        url: "https://dora.dev/capabilities/work-visibility-in-value-stream/",
+        note: "Guidance on understanding and displaying how work moves from a business idea through to customers.",
+      },
+      {
+        label: "DORA: Working in Small Batches",
+        url: "https://dora.dev/capabilities/working-in-small-batches/",
+        note: "Evidence for small, valuable, independently testable changes that shorten feedback and reduce delivery risk.",
+      },
+      {
+        label: "GOV.UK: Measuring and Reporting Progress",
+        url: "https://www.gov.uk/service-manual/agile-delivery/measuring-reporting-progress",
+        note: "Practical guidance for visible delivery reporting that supports decisions without creating counterproductive overhead.",
+      },
+      {
+        label: "GOV.UK: Deploying Software Regularly",
+        url: "https://www.gov.uk/service-manual/technology/deploying-software-regularly",
+        note: "Operational guidance for small, auditable deployments, consistent environments, automated tests, and smoke testing.",
+      },
+      {
+        label: "Google SRE: Postmortem Culture",
+        url: "https://sre.google/sre-book/postmortem-culture/",
+        note: "Primary guidance on learning from failure through evidence, contributing causes, and owned preventive actions without individual blame.",
+      },
+    ],
+  },
+  {
     slug: "first-30-days-software-development-partner",
     seoTitle: "First 30 Days With a Software Development Partner: Client Playbook",
     title: "The First 30 Days With a Software Development Partner: A Practical Client Playbook",
