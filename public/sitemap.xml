@@ -56,8 +56,14 @@
   </url>
   <url>
     <loc>https://bitlabsbuild.com/blog</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bitlabsbuild.com/blog/software-discovery-phase-guide</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

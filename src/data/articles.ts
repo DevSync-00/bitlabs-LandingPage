@@ -58,9 +58,238 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "software-discovery-phase-guide",
+    seoTitle: "Software Discovery Phase: A Practical Guide Before You Build",
+    title: "Before You Ask for a Software Quote: Run a Discovery That Produces Better Decisions",
+    excerpt:
+      "A practical guide to software discovery: what to investigate, who to involve, which deliverables matter, and how to leave with a decision, not a polished guess.",
+    category: "Product strategy",
+    read: "12 min read",
+    date: "30 September 2026",
+    publishedDate: "2026-09-30",
+    featuredImage: {
+      src: "/images/blog/software-discovery-phase-guide.webp",
+      alt: "A team arranging user evidence, risks, and system components into a clear software product plan",
+      concept:
+        "A vague field of possible software requirements resolving into one evidence-based delivery path.",
+    },
+    intro:
+      "A request for a software quote often arrives too early. The business has a solution in mind, a feature list in a document, and pressure to get a number. What it does not yet have is enough evidence to know whether the proposed product solves the right problem, where the expensive uncertainty sits, or what a responsible supplier is actually pricing. A focused software discovery phase closes that gap. Its output is not a larger requirements document. It is a defensible decision about what to do next.",
+    sections: [
+      {
+        heading: "What is a software discovery phase?",
+        paragraphs: [
+          "A software discovery phase is a short, evidence-led investigation before substantial design and development. It brings business, user, operational, and technical perspectives together to define the problem, test important assumptions, expose constraints, and decide whether building software is justified.",
+          "Discovery is not a workshop in which stakeholders dictate screens. It is also not a miniature development project disguised as planning. The UK Government Service Manual draws a useful boundary: understand the problem before committing to build, and use what you learn to decide whether the next investment is worthwhile. That principle applies just as well to a commercial platform, an internal operations tool, or a legacy-system replacement.",
+          "A good discovery can recommend a product build, a smaller experiment, configuration of an existing platform, a process change, or no project at all. The ability to stop is part of its value. If the only acceptable output is approval for a predetermined solution, the work is validation theatre, not discovery.",
+        ],
+      },
+      {
+        heading: "Why a feature list is not enough for an accurate software quote",
+        paragraphs: [
+          "Two suppliers can read the same feature list and price fundamentally different products. One may assume a single user role while another anticipates delegated permissions. One may price a clean API integration while another has inspected the legacy system and allowed for reconciliation, retries, and manual exceptions. The apparent price gap often reflects different assumptions rather than different efficiency.",
+          "Premature precision makes this worse. A fixed number can look reassuring while quietly depending on untested assumptions about data quality, integrations, security, decision speed, and acceptance criteria. When reality appears, the cost returns as change requests, reduced scope, delay, or compromised quality.",
+          "Discovery does not eliminate uncertainty. It identifies it, ranks it, and creates the least expensive way to reduce the uncertainty that could change the decision. The result should make estimates narrower and assumptions visible, not pretend that every detail is known.",
+        ],
+        bullets: [
+          "Business uncertainty: is the outcome valuable enough to fund?",
+          "User uncertainty: will the intended people use the proposed workflow?",
+          "Technical uncertainty: can the product work with the existing data and systems?",
+          "Operational uncertainty: who will run, support, and govern it after launch?",
+          "Delivery uncertainty: what dependencies could control the schedule?",
+        ],
+      },
+      {
+        heading: "Start with a decision, not a deliverables shopping list",
+        paragraphs: [
+          "Write down the decision discovery must enable. A useful version is specific: ‘Should we invest in replacing the manual claims process, and if so, what is the smallest service that can reduce handling time without increasing compliance risk?’ This gives the team a boundary and a standard for deciding which research matters.",
+          "Then define the evidence that would change that decision. If the project only makes sense above a certain transaction volume, verify the volume. If adoption depends on field staff using a mobile device with poor connectivity, observe that environment. If the case depends on integrating with a vendor, test access to the real interface rather than relying on a sales slide.",
+          "Finally, name the person accountable for the investment decision and book the decision review before discovery begins. Without a decision owner, findings tend to become a presentation that circulates while the original assumptions survive untouched.",
+        ],
+      },
+      {
+        heading: "Investigate the current work before designing the future",
+        paragraphs: [
+          "The current process contains evidence that a requirements workshop cannot reproduce. Observe representative users doing the work. Include the spreadsheets, messages, phone calls, approvals, workarounds, duplicate entry, and recovery steps that sit outside the official procedure. Support tickets, analytics, audit findings, and exception logs can reveal where the real cost and risk accumulate.",
+          "Map the end-to-end journey, including what happens before and after the proposed software. A customer portal may appear simple until the team sees the back-office verification, payment reconciliation, document retention, and support work it creates. Optimising one screen while exporting effort to operations is not a successful product outcome.",
+          "Quantify the baseline where possible: demand, completion rate, elapsed time, staff effort, avoidable contacts, error rate, rework, and material risk. Use ranges when the data is incomplete and state how each figure was derived. A baseline turns ‘make the process easier’ into a result the organisation can later test.",
+        ],
+        bullets: [
+          "Who is trying to achieve what outcome?",
+          "How is the work completed today, including offline steps and exceptions?",
+          "Where do people wait, repeat work, abandon the task, or need help?",
+          "What does the current problem cost in time, money, risk, or lost opportunity?",
+          "Which users may be excluded by accessibility, connectivity, language, or device assumptions?",
+        ],
+      },
+      {
+        heading: "Surface technical and security constraints early",
+        paragraphs: [
+          "Technical discovery should inspect the environment the product must enter. That includes system ownership, integration options, data definitions, identity and access, hosting rules, release processes, observability, and support responsibilities. An architecture diagram is useful only when it reflects real interfaces and accountable owners.",
+          "Treat data migration as a product risk, not a late implementation task. Sample the source data, identify missing or conflicting fields, estimate volumes, define retention obligations, and agree how records will be reconciled. A clean prototype built on invented data proves very little about a migration-heavy programme.",
+          "Security belongs in the product definition. The NIST Secure Software Development Framework recommends integrating secure practices throughout the software lifecycle. During discovery, that means identifying sensitive assets, likely threats, access boundaries, regulatory duties, and evidence the organisation will need before selecting an architecture or publishing a fixed budget.",
+        ],
+        bullets: [
+          "Systems, APIs, data owners, and realistic access conditions",
+          "Authentication, roles, privileged actions, and audit requirements",
+          "Data classification, residency, retention, migration, and deletion",
+          "Availability, performance, recovery, and support expectations",
+          "Procurement, legal, regulatory, and third-party dependencies",
+        ],
+      },
+      {
+        heading: "Test the riskiest assumptions with the cheapest credible evidence",
+        paragraphs: [
+          "Do not prototype every screen. Rank assumptions by how damaging it would be if they were false and how little evidence currently supports them. Test the assumptions in the upper-right corner first: high consequence, low confidence.",
+          "Match the test to the question. Interviews can explain motives but do not prove that people can use a workflow. A clickable prototype can test comprehension but not integration throughput. A technical spike can test an API but not willingness to adopt. Operational walkthroughs are often better than polished interfaces for exposing permissions, handoffs, and exception cases.",
+          "Record the result as evidence, not a verdict manufactured after the fact: what the team believed, how it tested the belief, what happened, and what changed. If a test cannot affect scope, approach, or the go/no-go decision, question why it is being run.",
+        ],
+      },
+      {
+        heading: "What should a software discovery deliver?",
+        paragraphs: [
+          "The useful outputs of discovery are working decision tools. They should be concise enough for the future delivery team to use and specific enough for a buyer to compare proposals on the same basis. A large deck is not evidence of thoroughness if nobody can find the assumptions that control cost.",
+          "Avoid treating wireframes, a backlog, or an architecture diagram as isolated handover items. Each should trace back to a user or business need and forward to a risk, measure, or delivery decision. Record open questions alongside named owners and the date by which an answer is needed.",
+        ],
+        bullets: [
+          "A clear problem statement, desired outcomes, baseline, and success measures",
+          "Evidence about priority users, their current journey, needs, and barriers",
+          "A map of systems, data, operations, constraints, and accountable owners",
+          "An assumption and risk register showing what was tested and what remains uncertain",
+          "Prioritised scope for the smallest valuable release, including explicit exclusions",
+          "Solution options and trade-offs, not just one unexplained recommendation",
+          "A delivery approach, indicative range, dependencies, and conditions behind the estimate",
+          "A go, test, buy, change-process, defer, or stop recommendation",
+        ],
+      },
+      {
+        heading: "How long should software discovery take?",
+        paragraphs: [
+          "Duration should follow uncertainty and consequence, not a standard package. A focused enhancement with known users and systems may need several working days. A new regulated service spanning organisations may need several weeks. The Government Service Manual notes that four to eight weeks is typical for its context, but the transferable lesson is to let the purpose determine the length.",
+          "Timebox the work and state what can be learned credibly within that boundary. Extend discovery only when a named unanswered question is material to the decision and there is a proportionate way to answer it. Endless research can be another form of avoiding commitment.",
+          "A small multidisciplinary team usually works better than a relay of specialists. Include product or business ownership, user research or service design, technical leadership, and the relevant operational, data, security, or domain expertise. The people who would inherit delivery should participate early enough to challenge the findings.",
+        ],
+      },
+      {
+        heading: "Turn discovery evidence into an estimate you can govern",
+        paragraphs: [
+          "Ask for an estimate that shows its construction. It should connect scope slices to team shape, elapsed time, dependencies, and confidence. It should also distinguish the first releasable outcome from later possibilities. A single total without assumptions is difficult to compare and nearly impossible to manage.",
+          "Use ranges for work that still contains meaningful uncertainty. Document what would move the estimate toward either end, which items need a spike or supplier input, and which choices can reduce cost. Agree how discoveries made during delivery will change scope, budget, or schedule; uncertainty does not disappear because a contract has been signed.",
+          "Compare suppliers on their reading of the problem, the questions they ask, and the risks they make visible. The cheapest credible path may come from removing a feature, buying a component, or changing the process. A partner who only converts every request into billable development is not helping with the investment decision.",
+        ],
+      },
+      {
+        heading: "Red flags that make discovery expensive but not useful",
+        paragraphs: [
+          "Discovery has failed when it creates the appearance of certainty without improving the decision. Watch for a team that begins with a preferred technology, speaks only to senior stakeholders, or spends most of the time formatting deliverables. Another warning sign is a backlog full of features but empty of outcomes, evidence, failure cases, and operational work.",
+          "The client can undermine discovery too. Withholding access to users, data, frontline staff, or technical owners forces the team to substitute assumptions. Slow decisions consume a short timebox quickly. Before starting, confirm access, availability, confidentiality rules, and who can resolve conflicting priorities.",
+        ],
+        bullets: [
+          "The solution and budget are treated as fixed before investigation begins",
+          "User research means asking stakeholders what users probably want",
+          "Happy-path wireframes replace analysis of exceptions and operations",
+          "Security, data migration, accessibility, and support are deferred until build",
+          "The final estimate hides assumptions, exclusions, and confidence",
+          "There is no explicit option to stop or choose a non-build solution",
+        ],
+      },
+      {
+        heading: "A one-page brief to start your discovery",
+        paragraphs: [
+          "You do not need a complete specification to approach a discovery partner. You do need enough context for them to understand the decision and propose a responsible investigation. Keep the initial brief short, mark facts separately from assumptions, and link to evidence rather than copying it into a polished narrative.",
+          "Send the same brief to every potential partner. Ask each one which uncertainty they would investigate first, what access they need, what decision their work will enable, and what you will own at the end. Their answers will reveal more than a generic credentials deck.",
+        ],
+        bullets: [
+          "Decision: what investment or product decision must be made?",
+          "Problem: who experiences it, how, and what evidence already exists?",
+          "Value: what changes if the problem is solved, and how will that be measured?",
+          "Context: current process, systems, data, previous attempts, and known constraints",
+          "Unknowns: the assumptions most likely to change feasibility, value, cost, or time",
+          "Access: users, operational staff, technical owners, data, and environments available",
+          "Boundary: timebox, budget boundary, mandatory dates, and explicit exclusions",
+          "Decision owner: the person who will act on the findings",
+        ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Custom Software or Off-the-Shelf?",
+        to: "/blog/custom-software-vs-off-the-shelf",
+        note: "Compare build, buy, and hybrid options before turning a preferred answer into a project.",
+      },
+      {
+        label: "The First 30 Days With a Software Development Partner",
+        to: "/blog/first-30-days-software-development-partner",
+        note: "Carry discovery evidence into access, governance, delivery, and the first working release.",
+      },
+      {
+        label: "Explore BitLabs services",
+        to: "/services",
+        note: "See how BitLabs supports product discovery, custom software delivery, and technology consulting.",
+      },
+    ],
+    closing:
+      "The best discovery does not make a software project look inevitable. It gives the organisation enough evidence to choose the smallest responsible next investment, understand what could change that choice, and walk away when building is not the answer.",
+    faqs: [
+      {
+        question: "What is the difference between software discovery and requirements gathering?",
+        answer:
+          "Requirements gathering usually documents what a proposed solution should do. Discovery starts earlier: it tests whether the problem is worth solving, studies users and current operations, examines technical and commercial constraints, and compares possible responses. Requirements may be one output, but they are not the purpose.",
+      },
+      {
+        question: "Should discovery happen before choosing a software development company?",
+        answer:
+          "It can happen before or as a bounded first engagement with a potential partner. If a supplier runs it, make sure the outputs are usable by your organisation and other suppliers, the commercial terms do not force a build contract, and the final recommendation can include stopping or buying an existing product.",
+      },
+      {
+        question: "How much does a software discovery phase cost?",
+        answer:
+          "Cost depends on the uncertainty, risk, duration, disciplines required, and access to existing evidence. Ask for a timeboxed proposal tied to specific decisions and learning goals. Comparing a standard workshop price without comparing scope and evidence is likely to mislead.",
+      },
+      {
+        question: "Can discovery provide a fixed software development quote?",
+        answer:
+          "Discovery can make scope and assumptions clear enough for a narrower, more defensible estimate. A fixed quote is credible only for work that is sufficiently understood and bounded. High-risk integrations, migrations, or untested workflows may still need ranges, allowances, or separate experiments.",
+      },
+      {
+        question: "Who should participate in software discovery?",
+        answer:
+          "Include the decision owner, representative users, frontline or support staff, product and technical leadership, and specialists relevant to the risk, such as security, data, legal, finance, or procurement. Keep the working team small, but do not let convenience exclude the people who understand real exceptions and constraints.",
+      },
+      {
+        question: "What happens after the discovery phase?",
+        answer:
+          "The decision may be to prototype a risky assumption, buy or configure an existing tool, change the process, begin an intentionally small delivery phase, defer the investment, or stop. If development proceeds, the discovery evidence should become the starting context for the delivery team, not a report placed in an archive.",
+      },
+    ],
+    sources: [
+      {
+        label: "GOV.UK Service Manual: How the discovery phase works",
+        url: "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        note: "Guidance on defining the problem, understanding users and constraints, measuring success, and deciding whether to proceed.",
+      },
+      {
+        label: "GOV.UK Service Manual: User research in discovery",
+        url: "https://www.gov.uk/service-manual/user-research/user-research-in-discovery",
+        note: "Practical guidance on studying current journeys, user needs, barriers, support, and offline parts of a service.",
+      },
+      {
+        label: "GOV.UK Service Manual: Measuring the benefits of your service",
+        url: "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits",
+        note: "Guidance on establishing a baseline and relating service problems to measurable costs and benefits.",
+      },
+      {
+        label: "NIST Secure Software Development Framework (SP 800-218)",
+        url: "https://csrc.nist.gov/pubs/sp/800/218/final",
+        note: "A framework for integrating secure development practices throughout the software lifecycle.",
+      },
+    ],
+  },
+  {
     slug: "recover-stalled-software-project-10-day-plan",
     seoTitle: "How to Recover a Stalled Software Project in 10 Working Days",
-    title: "Your Software Project Is Stalling: A Practical Recovery Plan for the Next 10 Working Days",
+    title:
+      "Your Software Project Is Stalling: A Practical Recovery Plan for the Next 10 Working Days",
     excerpt:
       "A ten-day recovery runbook for finding the real delivery constraint, stopping low-value work, shipping one narrow slice, and making an evidence-based decision about what happens next.",
     category: "Software delivery",
