@@ -3,7 +3,6 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-  useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -36,7 +35,6 @@ function NotFoundComponent() {
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
-  const router = useRouter();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -50,7 +48,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
-              router.invalidate();
+              if (typeof window !== "undefined") {
+                window.location.reload();
+                return;
+              }
               reset();
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
@@ -75,11 +76,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "BitLabs Technology — Software teams and technology services" },
-      { name: "description", content: "BitLabs Technology PLC builds intelligent software, AI systems, and enterprise platforms for the next generation of business." },
-      { name: "keywords", content: "BitLabs, BitLabs Technology, Enterprise Software, EdTech, Cybersecurity, Digital Transformation, software development, AI systems, cloud platforms" },
+      {
+        name: "description",
+        content:
+          "BitLabs Technology PLC builds intelligent software, AI systems, and enterprise platforms for the next generation of business.",
+      },
+      {
+        name: "keywords",
+        content:
+          "BitLabs, BitLabs Technology, Enterprise Software, EdTech, Cybersecurity, Digital Transformation, software development, AI systems, cloud platforms",
+      },
       { name: "author", content: "BitLabs Technology PLC" },
-      { property: "og:title", content: "BitLabs Technology — Software teams and technology services" },
-      { property: "og:description", content: "Dedicated engineering teams, custom software, cloud, and managed technology services." },
+      {
+        property: "og:title",
+        content: "BitLabs Technology — Software teams and technology services",
+      },
+      {
+        property: "og:description",
+        content:
+          "Dedicated engineering teams, custom software, cloud, and managed technology services.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://bitlabsbuild.com" },
       { name: "twitter:card", content: "summary" },
@@ -92,7 +108,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
