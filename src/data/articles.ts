@@ -52,11 +52,177 @@ export interface Article {
   closing?: string;
   featuredImage?: ArticleImage;
   decisionTable?: ArticleDecisionRow[];
+  decisionTableAfterHeading?: string;
+  decisionTableHeaders?: { first: string; second: string };
   faqs?: ArticleFaq[];
   sources?: ArticleSource[];
 }
 
 export const articles: Article[] = [
+  {
+    slug: "compare-software-development-proposals",
+    seoTitle: "How to Compare Software Development Proposals: Buyer’s Guide",
+    title: "How to Compare Software Development Proposals Without Choosing the Cheapest Mistake",
+    excerpt:
+      "A practical framework for normalising software proposals, exposing hidden exclusions, scoring delivery risk, and choosing the team most likely to produce a useful result.",
+    category: "Software procurement",
+    read: "14 min read",
+    date: "2 October 2026",
+    publishedDate: "2026-10-02",
+    featuredImage: {
+      src: "/images/blog/compare-software-development-proposals.webp",
+      alt: "Proposal documents, measuring tools and weighted tiles arranged for a structured comparison",
+      concept: "Software proposals compared by scope, evidence, risk and ownership rather than headline price alone.",
+    },
+    intro:
+      "Three software proposals can describe the same product and still price three different jobs. One may include discovery, migration, quality assurance and launch support. Another may price only the visible features. A third may be expensive because it has quietly assumed every unknown will become the supplier’s problem. Comparing the totals before comparing those assumptions is how a cheap proposal becomes an expensive project. This guide gives buyers a disciplined way to make the bids comparable, test the people behind them and choose on evidence rather than polish.",
+    sections: [
+      {
+        heading: "Start by making the proposals describe the same job",
+        paragraphs: [
+          "Do not score the documents as received. First create one comparison sheet with the outcome, users, essential workflows, integrations, data migration, non-functional requirements and launch responsibilities down the left. Record what each bidder has included, excluded, assumed or left unclear. The gaps are often more revealing than the features they all repeat.",
+          "A proposal for twelve weeks is not automatically faster than one for sixteen. The shorter plan may end at a staging environment while the longer plan includes production hardening, migration rehearsal, training and two weeks of launch support. Ask every bidder to restate its price against the same delivery boundary: what exists, where it is running, who can use it and what evidence proves it is ready.",
+          "Send clarification answers to every bidder. Better shared context produces better bids and prevents one supplier gaining an accidental advantage from a private conversation.",
+        ],
+        bullets: [
+          "Included: work explicitly covered by the price and schedule",
+          "Excluded: work the buyer or another supplier must fund",
+          "Assumed: conditions that must remain true for the estimate to hold",
+          "Unresolved: decisions or dependencies that could change cost or time",
+        ],
+      },
+      {
+        heading: "Use five gates before you use a weighted score",
+        paragraphs: [
+          "A scoring matrix can create a false sense of precision. Apply pass-or-fail gates first. A bidder that cannot meet a legal, security, data-residency or launch constraint should not compensate by scoring highly on presentation or price. The same applies to ownership: if your organisation must own the source code and production accounts, make that a condition rather than a lightly weighted preference.",
+          "Keep the gates few and defensible. Every mandatory condition narrows the field, and unnecessary requirements can exclude a capable smaller team. A gate should protect a real business constraint, not preserve a familiar technology or procurement habit.",
+        ],
+        bullets: [
+          "The proposal addresses the required business outcome and essential workflows",
+          "The delivery window and budget range are viable",
+          "Data protection, security and regulatory constraints can be met",
+          "Intellectual property, source code, data and production access will be owned as required",
+          "The proposed team is available and can provide relevant evidence",
+        ],
+      },
+      {
+        heading: "A practical software proposal scorecard",
+        paragraphs: [
+          "Score only after normalisation and mandatory checks. Agree the weights before the evaluation team sees prices. Otherwise, a persuasive presentation or surprisingly low figure can cause people to rewrite the criteria around a preferred bidder.",
+          "The example below suits a custom business platform where dependable delivery matters more than an aggressive first release date. Change the weights to reflect your risk. A prototype might give more weight to learning speed; a regulated platform should give more to security, assurance and operational readiness.",
+        ],
+      },
+      {
+        heading: "1. Does the proposal understand the business problem?",
+        paragraphs: [
+          "Look for a clear account of the current process, the people affected, the cost of the problem and the measurable change the project should create. A proposal that simply mirrors your feature list has demonstrated transcription, not understanding.",
+          "Strong bidders identify tensions. They may notice that faster customer onboarding conflicts with manual compliance review, or that a requested dashboard cannot be trusted until the underlying data is cleaned. They should explain what they would validate first and which decision the evidence will support.",
+        ],
+        bullets: ["Ask: Which assumption in our brief creates the most delivery risk?", "Ask: What would you remove from the first release, and why?", "Ask: Which business measure should change within 90 days of launch?"],
+      },
+      {
+        heading: "2. Is the scope testable, or merely detailed?",
+        paragraphs: [
+          "A long feature list can still be ambiguous. Useful scope describes important user scenarios, rules, data and acceptance conditions. ‘User management’ could mean basic email sign-in or enterprise identity, delegated administration, audit history and regional access controls. Those are different jobs.",
+          "Ask the bidder to walk through one ordinary scenario and one failure scenario from start to finish. For a payment workflow, that means more than a successful transaction: consider timeouts, duplicate callbacks, refunds, reconciliation and what support staff can see. The conversation reveals whether the estimate covers a production service or only a happy-path demonstration.",
+        ],
+      },
+      {
+        heading: "3. Can you trace the estimate back to people, time and assumptions?",
+        paragraphs: [
+          "A credible estimate shows the proposed roles, their allocation, the elapsed schedule and the work included in each phase. It also explains whether named specialists are full-time, shared across clients or available only for reviews. ‘Senior team’ is not a staffing plan.",
+          "Compare capacity rather than day rates alone. Forty low-rate days do not equal twenty experienced days, but neither does a senior title guarantee useful output. Ask what each role will produce and how the team will work together. Then reconcile the arithmetic: role allocation multiplied by duration should make sense alongside the quoted price.",
+          "Treat an unusually narrow estimate as a prompt for questions, not immediate proof of efficiency. It may reflect a sharper solution; it may also omit analysis, testing, management, deployment or contingency.",
+        ],
+      },
+      {
+        heading: "4. Does the delivery plan create evidence early?",
+        paragraphs: [
+          "Milestones should reduce uncertainty or put usable capability in front of real users. ‘Backend complete’ and ‘80% development complete’ sound measurable but say little about whether the product works. Prefer milestones such as a tested end-to-end workflow, a representative migration rehearsal or a limited production release to one user group.",
+          "For uncertain work, insist on decision points. A short discovery or technical spike should end with evidence, options and a decision—not an automatic transition into a large build. UK government guidance on contracting for agile delivery makes the same underlying point: contracts need room for learning while retaining commercial control and accountability for outcomes.",
+        ],
+        bullets: ["Working software is demonstrated at a regular cadence", "High-risk data and integrations are tested early", "The buyer can change priorities within a defined budget guardrail", "Stop, continue and redirect decisions have explicit evidence"],
+      },
+      {
+        heading: "5. Are quality and security activities priced as work?",
+        paragraphs: [
+          "‘Security best practices’ and ‘thorough testing’ are promises, not deliverables. Ask which activities are included, who performs them and what evidence you receive. The answer should be proportionate to the product’s risk: a public information site and a health platform should not have identical assurance plans.",
+          "For security, connect requirements to a recognised framework instead of accepting a vague claim. NIST’s Secure Software Development Framework provides a common language for secure development practices and supplier conversations. OWASP’s Application Security Verification Standard can help turn application-security expectations into testable requirements. Neither framework removes the need to decide what is appropriate for your system.",
+        ],
+        bullets: ["Automated and manual testing responsibilities", "Code review, dependency scanning and secrets handling", "Threat modelling and security verification for material risks", "Performance, accessibility, backup and recovery checks where relevant", "Defect triage, acceptance criteria and evidence supplied at handover"],
+      },
+      {
+        heading: "6. Who owns the code, accounts, data and route out?",
+        paragraphs: [
+          "Ownership should be operational, not ceremonial. A contract may say the client owns the code while the repository, cloud account, domain, app-store listing and monitoring remain under supplier-controlled accounts. That leaves the buyer dependent on cooperation at the moment leverage is lowest.",
+          "Agree where assets live from the beginning, who holds administrator access, how third-party licences are treated and what happens at termination. Ask for a handover plan before the project starts. A supplier confident in its value should not need technical captivity to retain a client.",
+        ],
+        bullets: ["Source repositories and commit history", "Cloud, domain, analytics, email and app-store accounts", "Database content, export formats and retention obligations", "Design files, documentation, deployment configuration and credentials", "Open-source and commercial licence obligations"],
+      },
+      {
+        heading: "7. What happens when the estimate meets reality?",
+        paragraphs: [
+          "Every meaningful software project discovers something. The proposal should explain how scope decisions, new information and change requests affect budget and schedule. Fixed price does not eliminate change; it defines which uncertainty the supplier has priced and what happens outside that boundary.",
+          "For time-and-materials work, look for spending limits, short planning horizons, frequent demonstrations and a buyer who can make priority decisions. For fixed-price work, look for precise acceptance boundaries and a fair change mechanism. In both cases, insist on a visible decision log and early warning when an assumption stops being true.",
+        ],
+      },
+      {
+        heading: "8. Evaluate the actual team, not the sales team",
+        paragraphs: [
+          "Meet the person who will lead delivery and at least one person who will do the work. Give them a real, ambiguous scenario from your project and listen to the questions they ask. You are testing reasoning, candour and communication—not whether they can produce an instant answer.",
+          "Confirm whether the people presented are committed to the engagement and what happens if they leave. Relevant experience is more specific than an industry logo: ask what problem the team personally solved, what went wrong, what changed as a result and whether a reference can verify the account.",
+        ],
+      },
+      {
+        heading: "Run the same 60-minute clarification session with every finalist",
+        paragraphs: [
+          "Use a consistent agenda so charisma does not replace evidence. Spend ten minutes on the business outcome, fifteen on scope and assumptions, fifteen on delivery and team, ten on security and operations, and ten on commercial questions. Record unanswered items and issue the same material clarifications to all finalists.",
+          "Do not turn the meeting into unpaid solution design. The aim is to understand the proposal and working relationship. If a material technical unknown needs investigation, commission a short paid discovery or proof of concept with defined outputs.",
+        ],
+      },
+      {
+        heading: "Red flags that matter more than a polished proposal",
+        paragraphs: ["Poor formatting is not a delivery risk; evasiveness is. Be careful when a bidder refuses to identify assumptions, discourages access to the delivery team or treats reasonable ownership and exit questions as distrust. Also question architecture that sounds impressive but cannot be connected to a requirement."],
+        bullets: ["A precise fixed price for poorly understood work, with no assumptions", "A schedule built around phases but no usable end-to-end milestones", "Testing, security, migration or production deployment marked ‘by client’ without discussion", "Named senior experts in the pitch but an unspecified delivery team", "No clear owner for product decisions on either side", "Large upfront payment without corresponding evidence or protection", "Supplier-controlled production accounts with no client administrator access", "A case study that cannot be connected to the people proposed for your work"],
+      },
+      {
+        heading: "Make the decision defensible—and keep the losing proposals useful",
+        paragraphs: [
+          "Ask evaluators to score independently, cite proposal evidence and state their confidence before discussing results. The group should then examine large scoring differences rather than averaging them away. A disagreement may expose an ambiguous response or a priority the team never aligned on.",
+          "Finish with a short decision record: the outcome sought, finalists considered, mandatory checks, weighted result, reference findings, material risks and why the selected proposal offers the best value. Keep the strongest ideas and risk observations from unsuccessful bids; procurement can produce useful insight even when only one supplier is appointed.",
+          "The winning proposal is not the document with the most detail. It is the clearest credible path from today’s problem to a working, owned and supportable product—with uncertainty made visible before it becomes a change request.",
+        ],
+      },
+    ],
+    decisionTableAfterHeading: "A practical software proposal scorecard",
+    decisionTableHeaders: { first: "Evaluation area", second: "Evidence to look for" },
+    decisionTable: [
+      { situation: "Business understanding and measurable outcome — 20%", recommendation: "Problem insight, success measures and sensible challenge" },
+      { situation: "Scope, assumptions and acceptance — 20%", recommendation: "Comparable boundary, testable scenarios and explicit exclusions" },
+      { situation: "Team and delivery evidence — 20%", recommendation: "Named capacity, relevant proof and early risk reduction" },
+      { situation: "Quality, security and operations — 15%", recommendation: "Risk-based activities with verifiable outputs" },
+      { situation: "Commercial clarity and total cost — 15%", recommendation: "Traceable estimate, change rules and ownership costs" },
+      { situation: "Ownership, handover and support — 10%", recommendation: "Client control, documented exit and workable support" },
+    ],
+    relatedLinks: [
+      { label: "Build a realistic custom software budget", to: "/blog/custom-software-development-cost-2026", note: "Use a transparent capacity model and account for the costs that often disappear from the first quote." },
+      { label: "Run discovery before requesting a fixed quote", to: "/blog/software-discovery-phase-guide", note: "Reduce the expensive unknowns before asking suppliers to commit to scope, time and price." },
+      { label: "Plan the first 30 days with your selected partner", to: "/blog/first-30-days-software-development-partner", note: "Turn a signed proposal into access, decisions, delivery evidence and a healthy working cadence." },
+    ],
+    faqs: [
+      { question: "Should we choose the cheapest software development proposal?", answer: "Only after confirming that it prices the same outcome, scope, quality, launch responsibilities and ownership as the alternatives. A lower bid can be excellent, but price differences often come from exclusions or assumptions rather than efficiency." },
+      { question: "How many software development proposals should we compare?", answer: "For many private-sector projects, three credible and genuinely different bidders are enough to expose market options without overwhelming the evaluation team. The right number depends on procurement rules, project value and how well the field was qualified before proposals were requested." },
+      { question: "What should carry the most weight in a software proposal scorecard?", answer: "Weight the risks that could prevent your intended outcome. Business understanding, scope clarity, delivery evidence and team quality usually deserve more weight than presentation. Regulated or safety-sensitive products should give additional weight to security, assurance and operational readiness." },
+      { question: "Is fixed price or time and materials better for custom software?", answer: "Fixed price fits work with a stable boundary and testable acceptance criteria. Time and materials fits work where learning will change priorities. Either can fail without transparent assumptions, budget controls, decision ownership and frequent evidence of progress." },
+      { question: "How can a non-technical buyer assess a technical proposal?", answer: "Ask the bidder to connect each major technical choice to a business requirement, risk or operating constraint. Use an independent technical adviser for material investments, but do not outsource the business decision: ownership, outcomes, budget and acceptable risk remain buyer responsibilities." },
+    ],
+    sources: [
+      { label: "UK Government: Contracting for Agile Guidance Note", url: "https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/contracting-for-agile-guidance-note-html", note: "Guidance on balancing iterative delivery, commercial protection, collaboration and outcome-based contracting." },
+      { label: "NIST Secure Software Development Framework (SSDF)", url: "https://csrc.nist.gov/pubs/sp/800/218/final", note: "A common set of secure software development practices that can support supplier conversations and requirements." },
+      { label: "OWASP Application Security Verification Standard", url: "https://owasp.org/www-project-application-security-verification-standard/", note: "A basis for specifying and verifying application security requirements at an appropriate assurance level." },
+    ],
+    closing: "Have proposals on the table but no clean way to compare them? BitLabs can help you normalise the scope, identify material gaps and test the delivery assumptions before you sign.",
+  },
   {
     slug: "custom-software-development-cost-2026",
     seoTitle: "Custom Software Development Cost in 2026: A Buyer’s Guide",

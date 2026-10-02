@@ -175,17 +175,18 @@ function ArticlePage() {
                   )}
                 </div>
               ))}
-              {section.heading === "Spreadsheet vs SaaS vs custom software" &&
+              {section.heading ===
+                  (article.decisionTableAfterHeading ?? "Spreadsheet vs SaaS vs custom software") &&
                 article.decisionTable && (
                   <div className="mt-8 overflow-x-auto rounded-lg border border-border/60">
                     <table className="w-full min-w-[34rem] border-collapse text-left">
                       <thead className="bg-muted text-foreground">
                         <tr>
                           <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em] text-muted-foreground">
-                            Situation
+                            {article.decisionTableHeaders?.first ?? "Situation"}
                           </th>
                           <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[.12em] text-muted-foreground">
-                            Best starting point
+                            {article.decisionTableHeaders?.second ?? "Best starting point"}
                           </th>
                         </tr>
                       </thead>
