@@ -60,6 +60,263 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "software-development-contract-checklist",
+    seoTitle: "Software Development Contract Checklist: 12 Clauses to Check",
+    title: "Software Development Contract Checklist: 12 Clauses to Check Before You Sign",
+    excerpt:
+      "A plain-English checklist for checking scope, acceptance, intellectual property, data, security, payments, change control, handover and exit terms before software work begins.",
+    category: "Software procurement",
+    read: "15 min read",
+    date: "3 October 2026",
+    publishedDate: "2026-10-03",
+    featuredImage: {
+      src: "/images/blog/software-development-contract-checklist.webp",
+      alt: "An open contract folder surrounded by modular project, ownership and handover objects",
+      concept:
+        "A software agreement treated as an operating system for scope, decisions, ownership and a clean exit.",
+    },
+    intro:
+      "A software development contract is tested when the original plan stops being true. A dependency is late. A workflow is more complicated than the brief suggested. The buyer rejects a release that the supplier considers finished. Someone leaves, the budget tightens, or the relationship ends earlier than expected. The agreement should make those moments manageable—not attempt to predict every one of them. This checklist helps buyers find the commercial and delivery questions that need clear answers before work begins. It is practical guidance, not legal advice; the final wording should be reviewed by a lawyer who understands your jurisdiction, sector and data obligations.",
+    sections: [
+      {
+        heading: "The short answer: read the contract as if the project stopped next month",
+        paragraphs: [
+          "Start at the end. If the engagement stopped thirty days from now, what would your organisation receive? You should be able to identify the current source code, design files, infrastructure configuration, documentation, data exports, credentials, third-party licences and the work still in progress. You should also know what you would owe and whether another capable team could continue.",
+          "That exercise exposes more risk than checking whether the deadline and total price match the proposal. A contract can promise a finished product while leaving the repository, production accounts and essential background technology under supplier control. It can assign intellectual property but provide no usable handover. It can require acceptance while never defining how acceptance is tested.",
+          "Treat the agreement as a working system with three layers: stable legal terms, a detailed statement of work, and operating schedules that can be updated without renegotiating the entire contract.",
+        ],
+        bullets: [
+          "Master agreement: liability, confidentiality, intellectual property, termination and governing law",
+          "Statement of work: outcome, scope, team, timing, price, assumptions and responsibilities",
+          "Operating schedules: acceptance tests, security requirements, data processing, support and handover",
+        ],
+      },
+      {
+        heading: "The 12-clause software contract review sheet",
+        paragraphs: [
+          "Use this as a conversation guide, not as replacement wording. For each row, locate the relevant clause and schedule, record the answer in plain language, and mark contradictions. A contract that says one thing while the proposal or statement of work says another needs an explicit order of precedence.",
+        ],
+      },
+      {
+        heading: "1. Scope and the delivery boundary",
+        paragraphs: [
+          "The agreement should identify the outcome, users, platforms, essential workflows, integrations, data work and operational deliverables. It should also name exclusions. ‘Develop a customer portal’ is a direction, not a delivery boundary.",
+          "Check what ‘complete’ means. Does the supplier stop after code is demonstrated, after it reaches a test environment, or after a production release with migration and support? Training, content entry, app-store submission, security testing and infrastructure setup are common gaps between a quoted build and a usable service.",
+          "Keep detailed scope in a version-controlled statement of work. The contract should say who may approve it and what happens when it conflicts with a sales proposal, email or later change request.",
+        ],
+        bullets: [
+          "What exact result exists at the delivery boundary?",
+          "Which work is expressly excluded or supplied by the client?",
+          "Which assumptions can change price or schedule?",
+          "Which document wins if two project documents disagree?",
+        ],
+      },
+      {
+        heading: "2. Deliverables, milestones and evidence",
+        paragraphs: [
+          "A milestone should correspond to something inspectable. ‘Development 50% complete’ is difficult to verify and creates an argument about effort. A tested end-to-end workflow, a migration rehearsal using representative data or a limited production release provides evidence that both parties can examine.",
+          "List non-code deliverables too: research findings, designs, automated tests, architecture decisions, deployment configuration, user guidance and operational runbooks. If an artefact matters during handover or audit, do not assume it will appear automatically.",
+          "Payments can follow milestones, time spent or another commercial model. Whatever the model, avoid making subjective progress percentages the only link between money and evidence.",
+        ],
+      },
+      {
+        heading: "3. Acceptance criteria and the review process",
+        paragraphs: [
+          "Acceptance determines when a deliverable counts as delivered, when payment becomes due and when a warranty may begin. It needs objective criteria, a review window, a way to report defects and a rule for retesting corrected work.",
+          "Be careful with deemed acceptance: a clause may treat silence, ordinary use or the end of a short review period as approval. That can be commercially reasonable when the buyer repeatedly delays decisions, but only if the review period is realistic and the supplier has provided everything needed to test.",
+          "Separate defects from new requests. A feature that fails an agreed test is not a change request; a newly discovered preference usually is. The contract should give both sides a quick route to resolve borderline cases without freezing the whole project.",
+        ],
+        bullets: [
+          "Who performs acceptance and against which test?",
+          "How many working days are available for review?",
+          "What information must a rejection contain?",
+          "What happens to minor defects that do not block use?",
+          "When does deemed acceptance apply, if at all?",
+        ],
+      },
+      {
+        heading: "4. Price, invoicing and the work behind the number",
+        paragraphs: [
+          "The pricing clause should align with the estimate. For time-and-materials work, record rates, role definitions, billing increments, expenses, approval thresholds and reporting. For fixed-price work, identify the priced scope, payment events and assumptions that would trigger a commercial change.",
+          "Clarify taxes, currency, exchange-rate treatment, third-party costs and whether rates may increase during a long engagement. Ask who pays for cloud usage, test devices, licences, messaging, maps, AI services and other metered dependencies both during development and after launch.",
+          "A deposit is not inherently a red flag. The useful question is whether payment exposure remains proportionate to delivered work and whether the buyer receives usable project assets throughout the engagement rather than only after the final invoice.",
+        ],
+      },
+      {
+        heading: "5. Change control that people can actually use",
+        paragraphs: [
+          "Software projects learn. A workable change process explains who may request a change, what impact information the supplier must provide, who may approve it and whether work can begin before approval. It should be lightweight enough for normal decisions and formal enough for material cost or schedule changes.",
+          "Not every adjustment needs a separate legal document. A product owner may be allowed to reorder work within an agreed capacity while additions to budget, deadlines or contractual obligations require a signed change. Define those boundaries.",
+          "Also define urgent changes. Production incidents and critical security issues should not wait for the same approval route as a new reporting preference, but emergency work still needs a spending limit and an after-the-fact record.",
+        ],
+      },
+      {
+        heading: "6. Intellectual property, background tools and open-source software",
+        paragraphs: [
+          "Paying for development does not answer every ownership question. The contract needs to distinguish new project work from the supplier’s pre-existing frameworks, third-party components and open-source software. Your required position may be ownership, a broad licence, or a mixture; the correct structure depends on the product and jurisdiction.",
+          "If rights are assigned, check what is covered, when the transfer occurs and whether payment status affects it. If the supplier keeps background technology, the buyer needs a durable licence broad enough to operate, modify, host, transfer and support the delivered product without returning for permission.",
+          "Require a record of third-party and open-source components with their licences. Open source is normal software engineering, not a defect, but its obligations must be compatible with how you intend to distribute and commercialise the product. The contract should also address code produced with AI tools: approved uses, confidentiality controls, review standards and responsibility for the delivered output.",
+        ],
+        bullets: [
+          "New code, designs, documentation, configuration and test assets",
+          "Supplier background materials and the licence granted to the buyer",
+          "Open-source inventory, notices and licence compliance",
+          "Third-party commercial services and transfer restrictions",
+          "AI-assisted work, confidential inputs and human review responsibility",
+        ],
+      },
+      {
+        heading: "7. Repositories, cloud accounts and access from day one",
+        paragraphs: [
+          "Legal ownership is weaker when practical control remains elsewhere. Agree where source code, designs, infrastructure, domains, app-store listings, analytics and production credentials will live. For a strategic product, client-owned accounts with appropriate supplier access usually create the cleanest continuity.",
+          "The buyer should not need to wait for termination to see its repository or production logs. Access also supports governance: it provides an independent record of progress and reduces the disruption caused by a personnel change or commercial dispute.",
+          "Define credential handling carefully. Shared passwords in email are not a handover plan. Use named accounts, appropriate roles, multi-factor authentication, an agreed secrets manager and a process for removing access when someone leaves.",
+        ],
+      },
+      {
+        heading: "8. Confidentiality, personal data and subprocessors",
+        paragraphs: [
+          "Confidentiality language should reflect the information both parties actually exchange: customer data, product plans, credentials, source code and supplier know-how. Check permitted use, access restrictions, required safeguards, incident notification and what happens to information at the end.",
+          "If the supplier processes personal data on the buyer’s behalf, a generic confidentiality clause is unlikely to be enough. Applicable privacy law may require specific processor terms. UK Information Commissioner guidance, for example, identifies required contract topics including documented instructions, confidentiality, security, subprocessors, assistance with individual rights, audits and deletion or return of data. Other jurisdictions have their own requirements.",
+          "Map the processing before drafting the schedule: categories of data and people, purpose, location, retention, international transfers and subprocessors. The contract cannot fix a data flow nobody has identified.",
+        ],
+      },
+      {
+        heading: "9. Security obligations and proof",
+        paragraphs: [
+          "‘Industry-standard security’ is difficult to test. Describe practices and evidence proportionate to the risk: access control, code review, dependency management, secret handling, backups, vulnerability response and incident notification. Identify which party configures and monitors the production environment.",
+          "A recognised framework can provide shared vocabulary. NIST’s Secure Software Development Framework organises practices for preparing the organisation, protecting software, producing well-secured releases and responding to vulnerabilities. Use a framework to make expectations clearer, not to copy every control into every project.",
+          "Set sensible notification paths and clocks. The first message about a suspected incident may contain incomplete information; require prompt notice, continuing updates, evidence preservation and cooperation rather than demanding a perfect final report immediately.",
+        ],
+      },
+      {
+        heading: "10. Warranties, support and the difference between a defect and maintenance",
+        paragraphs: [
+          "A defect warranty commonly covers failures to meet agreed specifications for a defined period. It does not automatically include new features, changes required by third-party services, operating-system updates or indefinite support. Spell out the boundary.",
+          "Check when the warranty starts. If each milestone has its own clock, early work may leave warranty before the full system launches. For an integrated product, a production-release trigger or separate system warranty may be more meaningful.",
+          "Ongoing support deserves its own service description: coverage hours, severity definitions, response targets, restoration targets, escalation, maintenance windows and fees. A response time is only a promise to acknowledge or begin work unless the agreement says otherwise.",
+        ],
+      },
+      {
+        heading: "11. Liability, indemnities and insurance",
+        paragraphs: [
+          "These clauses allocate financial risk when something goes wrong. They are highly dependent on governing law, bargaining power, project value and the damage a failure could cause, so qualified legal advice matters.",
+          "Read the structure, not only the headline cap. Identify which claims are capped, which are excluded, whether different caps apply to data, confidentiality or intellectual property, and whether the recoverable loss categories match realistic harm. An unlimited obligation from a small supplier may provide less practical protection than a credible cap supported by insurance and sound controls.",
+          "Ask for evidence of relevant insurance and check important exclusions. Insurance does not replace contractual responsibility, and a certificate alone does not prove that a particular event will be covered.",
+        ],
+      },
+      {
+        heading: "12. Termination, handover and transition assistance",
+        paragraphs: [
+          "The agreement should cover termination for serious breach, insolvency and—where commercially appropriate—convenience. It should state notice periods, cure opportunities, final payment rules and which provisions survive.",
+          "Make handover a list with a deadline. Include current code, branches and history; build and deployment instructions; infrastructure configuration; data exports and schemas; design sources; test assets; dependency and licence inventories; operational documentation; credentials; known defects; and work in progress. Require reasonable cooperation with a replacement team and agree whether transition assistance is included or charged at stated rates.",
+          "Consider step-in and continuity needs for critical systems, but do not reach automatically for source-code escrow. Escrow can help when essential source code is otherwise unavailable, yet it adds little when the buyer already has continuous repository access and the deposits are never tested. Choose the control that matches the real failure mode.",
+        ],
+      },
+      {
+        heading: "Five contradictions to resolve before signature",
+        paragraphs: [
+          "Many contract failures are not missing clauses; they are mismatched documents. Read the proposal, master agreement, statement of work and schedules together. Resolve conflicts explicitly instead of assuming everyone shares the same interpretation.",
+        ],
+        bullets: [
+          "The proposal promises production launch, but the scope ends at user acceptance testing",
+          "The contract assigns project IP, but a schedule gives the supplier ownership of all reusable code without defining it",
+          "Milestone payment is due on delivery, while another clause makes payment depend on acceptance",
+          "The security schedule demands controls the delivery plan has not priced or staffed",
+          "Termination requires handover, but no deliverables, format, deadline or transition rate is stated",
+        ],
+      },
+      {
+        heading: "A practical review process for buyers",
+        paragraphs: [
+          "Have the commercial owner, product lead, technical reviewer, security or privacy owner and legal counsel review the same document for different risks. Ask each reviewer to record the clause, the issue, the operational consequence and the proposed resolution. ‘Legal to review’ is not a useful project note.",
+          "Negotiate material points before drafting becomes a battle of tracked changes. A short heads-of-terms discussion can align ownership, pricing, acceptance, liability and exit positions while both sides can still adjust the delivery model.",
+          "Finally, turn signed obligations into project practices. Put acceptance dates in the delivery calendar, keep the repository and documentation current, record approved changes, review subprocessor updates and rehearse a handover before it is urgent. A contract protects the project best when the team actually uses it.",
+        ],
+      },
+    ],
+    decisionTableAfterHeading: "The 12-clause software contract review sheet",
+    decisionTableHeaders: { first: "Contract area", second: "The question to answer in plain English" },
+    decisionTable: [
+      { situation: "Scope and deliverables", recommendation: "What exactly will exist, where will it run and what is excluded?" },
+      { situation: "Acceptance", recommendation: "Who tests what, by when, and what counts as rejection or approval?" },
+      { situation: "Price and changes", recommendation: "What is priced, what can vary and who may approve additional spend?" },
+      { situation: "Intellectual property", recommendation: "What do we own, what is licensed and when do rights transfer?" },
+      { situation: "Data and security", recommendation: "What information is handled, under whose instructions and with which evidence?" },
+      { situation: "Accounts and access", recommendation: "Can we access the code, cloud, data and operational tools throughout delivery?" },
+      { situation: "Warranty and support", recommendation: "What gets fixed without extra charge, for how long, and what support follows?" },
+      { situation: "Liability", recommendation: "Which losses sit with each party, under which caps, exclusions and insurance?" },
+      { situation: "Termination and handover", recommendation: "If work stops, what do we receive, when, and who helps the next team?" },
+    ],
+    relatedLinks: [
+      {
+        label: "Compare software development proposals",
+        to: "/blog/compare-software-development-proposals",
+        note: "Normalise scope, assumptions, team capacity and total cost before selecting a supplier.",
+      },
+      {
+        label: "Understand custom software development cost",
+        to: "/blog/custom-software-development-cost-2026",
+        note: "Build a realistic first-year budget and expose costs that may be missing from the quote.",
+      },
+      {
+        label: "Plan the first 30 days with your development partner",
+        to: "/blog/first-30-days-software-development-partner",
+        note: "Turn the signed agreement into access, decisions, working software and delivery evidence.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What should a software development contract include?",
+        answer: "At minimum, it should address scope, deliverables, acceptance, pricing, change control, intellectual property, confidentiality and data, security, account access, warranties, support, liability, termination and handover. The necessary detail depends on the product, jurisdiction and risk.",
+      },
+      {
+        question: "Who should own the source code in custom software development?",
+        answer: "There is no universal answer. A buyer commonly seeks ownership of new project-specific work while the supplier retains pre-existing tools and third-party components remain under their licences. The buyer still needs rights broad enough to operate, modify and transfer the complete product. Local counsel should draft the required ownership and licence language.",
+      },
+      {
+        question: "When should a client accept a software deliverable?",
+        answer: "Acceptance should follow an agreed test against objective criteria, within a realistic review period and after the supplier provides the environment, data and documentation needed to test. The contract should explain rejection, correction, retesting, minor defects and any deemed-acceptance rule.",
+      },
+      {
+        question: "Do agile software projects still need a defined contract?",
+        answer: "Yes. Agile delivery changes how scope is refined; it does not remove the need to define budget controls, decision authority, team capacity, evidence, ownership, quality expectations and exit rights. The agreement should support learning without making spending or responsibility open-ended.",
+      },
+      {
+        question: "Is source-code escrow necessary?",
+        answer: "Not always. Escrow may be useful when critical source code would otherwise be inaccessible if a supplier failed. Continuous client access to repositories, infrastructure and documentation may address the risk more directly. Any escrow arrangement should define release events and verify that deposits are current and usable.",
+      },
+      {
+        question: "Can we use a free software development contract template?",
+        answer: "A template can help identify topics, but it may assume the wrong jurisdiction, pricing model or ownership position. Use it as a checklist, then tailor the agreement and schedules to the actual project and obtain qualified legal review before signing.",
+      },
+    ],
+    sources: [
+      {
+        label: "UK Government: Contracting for Agile Guidance Note",
+        url: "https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/contracting-for-agile-guidance-note-html",
+        note: "Guidance on aligning agile delivery, collaboration, outcomes and commercial protection.",
+      },
+      {
+        label: "UK Information Commissioner: Contracts between controllers and processors",
+        url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/",
+        note: "Detailed guidance on required processor-contract topics under UK data protection law; the page notes that updates are underway.",
+      },
+      {
+        label: "NIST Secure Software Development Framework",
+        url: "https://csrc.nist.gov/pubs/sp/800/218/final",
+        note: "A common vocabulary for secure development practices and software supplier conversations.",
+      },
+      {
+        label: "SPDX: Open-source software bill of materials standard",
+        url: "https://spdx.dev/",
+        note: "An international open standard for communicating software components, licences and related supply-chain information.",
+      },
+    ],
+    closing:
+      "A good agreement should make delivery easier, not merely make a dispute easier to argue. BitLabs can help you test the technical schedules, delivery assumptions and handover requirements before your legal team finalises the wording.",
+  },
+  {
     slug: "compare-software-development-proposals",
     seoTitle: "How to Compare Software Development Proposals: Buyer’s Guide",
     title: "How to Compare Software Development Proposals Without Choosing the Cheapest Mistake",
